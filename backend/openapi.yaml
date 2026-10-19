@@ -1,0 +1,203 @@
+# Historical reference — superseded by ENGINEER_START_HERE_V48.md and backend/runtime in V48.
+openapi: 3.1.0
+info:
+  title: Horn & Harvest Operations API
+  version: 1.0.0
+  description: Production contract for customer, warehouse, driver and CEO workflows.
+servers:
+  - url: https://hornandharvest.com/api
+security:
+  - firebaseBearer: []
+components:
+  securitySchemes:
+    firebaseBearer:
+      type: http
+      scheme: bearer
+      bearerFormat: Firebase ID token
+  parameters:
+    IdempotencyKey:
+      in: header
+      name: Idempotency-Key
+      required: true
+      schema: { type: string, minLength: 16, maxLength: 128 }
+  schemas:
+    Money:
+      type: object
+      required: [currency, minorUnits]
+      properties:
+        currency: { type: string, example: USD }
+        minorUnits: { type: integer, example: 159 }
+    OrderLine:
+      type: object
+      required: [productId, quantity]
+      properties:
+        productId: { type: string }
+        quantity: { type: integer, minimum: 1 }
+    Order:
+      type: object
+      required: [id, customerId, lines, status, total, version]
+      properties:
+        id: { type: string }
+        customerId: { type: string }
+        lines: { type: array, items: { $ref: '#/components/schemas/OrderLine' } }
+        status:
+          type: string
+          enum: [DRAFT, AWAITING_PAYMENT, WAITING_FOR_STOCK, CONFIRMED, PREPARING, READY_FOR_COLLECTION, DISPATCHED, EN_ROUTE, ARRIVED, DELIVERED, DELIVERY_ISSUE, CANCELLED, REFUNDED]
+        total: { $ref: '#/components/schemas/Money' }
+        version: { type: integer }
+    StatusChange:
+      type: object
+      required: [status, expectedVersion]
+      properties:
+        status: { type: string }
+        expectedVersion: { type: integer }
+        note: { type: string, maxLength: 500 }
+    LocationEvent:
+      type: object
+      required: [eventId, latitude, longitude, capturedAt]
+      properties:
+        eventId: { type: string }
+        latitude: { type: number, minimum: -90, maximum: 90 }
+        longitude: { type: number, minimum: -180, maximum: 180 }
+        accuracyMetres: { type: number, minimum: 0 }
+        capturedAt: { type: string, format: date-time }
+paths:
+  /health:
+    get:
+      security: []
+      responses:
+        '200': { description: Service available }
+  /me:
+    get:
+      responses:
+        '200': { description: Current identity and permitted roles }
+  /customer/orders:
+    get:
+      responses:
+        '200': { description: Signed-in customer's orders only }
+    post:
+      parameters: [{ $ref: '#/components/parameters/IdempotencyKey' }]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [lines, deliveryAddress]
+              properties:
+                lines: { type: array, minItems: 1, items: { $ref: '#/components/schemas/OrderLine' } }
+                deliveryAddress: { type: object }
+                requestedWindow: { type: object }
+      responses:
+        '201':
+          description: Order created and stock reserved, or waiting for stock
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/Order' }
+        '409': { description: Stock/version conflict }
+  /customer/orders/{orderId}:
+    get:
+      parameters:
+        - { in: path, name: orderId, required: true, schema: { type: string } }
+      responses:
+        '200': { description: Own order with timeline and delivery summary }
+        '404': { description: Not found without leaking ownership }
+  /customer/orders/{orderId}/invoice:
+    get:
+      parameters:
+        - { in: path, name: orderId, required: true, schema: { type: string } }
+      responses:
+        '200': { description: Immutable invoice data and protected PDF URL }
+  /warehouse/orders:
+    get:
+      responses:
+        '200': { description: Authorized preparation and dispatch queue }
+  /warehouse/orders/{orderId}/status:
+    post:
+      parameters:
+        - { in: path, name: orderId, required: true, schema: { type: string } }
+        - { $ref: '#/components/parameters/IdempotencyKey' }
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: { $ref: '#/components/schemas/StatusChange' }
+      responses:
+        '200': { description: Transition accepted and audited }
+        '409': { description: Illegal transition or version conflict }
+  /warehouse/deliveries/{deliveryId}/assign:
+    post:
+      parameters:
+        - { in: path, name: deliveryId, required: true, schema: { type: string } }
+        - { $ref: '#/components/parameters/IdempotencyKey' }
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [driverId, windowStart, windowEnd]
+              properties:
+                driverId: { type: string }
+                windowStart: { type: string, format: date-time }
+                windowEnd: { type: string, format: date-time }
+      responses:
+        '200': { description: Driver assigned and customer timeline updated }
+  /warehouse/inventory:
+    get:
+      responses:
+        '200': { description: Physical, reserved and available stock }
+  /driver/deliveries:
+    get:
+      responses:
+        '200': { description: Current driver's assigned deliveries }
+  /driver/deliveries/{deliveryId}/tracking:
+    post:
+      parameters:
+        - { in: path, name: deliveryId, required: true, schema: { type: string } }
+        - { $ref: '#/components/parameters/IdempotencyKey' }
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: array
+              minItems: 1
+              maxItems: 100
+              items: { $ref: '#/components/schemas/LocationEvent' }
+      responses:
+        '202': { description: New events accepted; duplicates ignored }
+  /driver/deliveries/{deliveryId}/proof:
+    post:
+      parameters:
+        - { in: path, name: deliveryId, required: true, schema: { type: string } }
+        - { $ref: '#/components/parameters/IdempotencyKey' }
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              required: [photo, receiverName, signature]
+              properties:
+                photo: { type: string, format: binary }
+                receiverName: { type: string, minLength: 2 }
+                signature: { type: string, format: binary }
+      responses:
+        '200': { description: Proof stored and delivery completed }
+        '422': { description: Required proof is missing or invalid }
+  /notifications:
+    get:
+      responses:
+        '200': { description: Current user's permanent in-account notification history }
+  /ceo/summary:
+    get:
+      responses:
+        '200': { description: Executive summary and unresolved exceptions }
+  /ceo/alerts/{alertId}/acknowledge:
+    post:
+      parameters:
+        - { in: path, name: alertId, required: true, schema: { type: string } }
+        - { $ref: '#/components/parameters/IdempotencyKey' }
+      responses:
+        '200': { description: Alert acknowledged with audit record }

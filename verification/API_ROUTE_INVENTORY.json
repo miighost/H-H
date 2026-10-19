@@ -1,0 +1,314 @@
+[
+  {
+    "method": "GET",
+    "path": "/api/operations/workspace",
+    "source": "backend/runtime/api.mjs",
+    "access": "existing Firebase identity and server role/ownership"
+  },
+  {
+    "method": "POST",
+    "path": "/api/operations/account",
+    "source": "backend/runtime/api.mjs",
+    "access": "existing Firebase identity and server role/ownership"
+  },
+  {
+    "method": "POST",
+    "path": "/api/operations/orders",
+    "source": "backend/runtime/api.mjs",
+    "access": "existing Firebase identity and server role/ownership"
+  },
+  {
+    "method": "GET",
+    "path": "/api/operations/orders/:id",
+    "source": "backend/runtime/api.mjs",
+    "access": "existing Firebase identity and server role/ownership"
+  },
+  {
+    "method": "POST",
+    "path": "/api/operations/orders/:id/assign",
+    "source": "backend/runtime/api.mjs",
+    "access": "existing Firebase identity and server role/ownership"
+  },
+  {
+    "method": "POST",
+    "path": "/api/operations/orders/:id/status",
+    "source": "backend/runtime/api.mjs",
+    "access": "existing Firebase identity and server role/ownership"
+  },
+  {
+    "method": "GET",
+    "path": "/api/operations/orders/:id/proof",
+    "source": "backend/runtime/api.mjs",
+    "access": "existing Firebase identity and server role/ownership"
+  },
+  {
+    "method": "POST",
+    "path": "/api/operations/payments",
+    "source": "backend/runtime/api.mjs",
+    "access": "existing Firebase identity and server role/ownership"
+  },
+  {
+    "method": "POST",
+    "path": "/api/operations/orders/:id/apply-credit",
+    "source": "backend/runtime/api.mjs",
+    "access": "existing Firebase identity and server role/ownership"
+  },
+  {
+    "method": "POST",
+    "path": "/api/operations/inventory/:id",
+    "source": "backend/runtime/api.mjs",
+    "access": "existing Firebase identity and server role/ownership"
+  },
+  {
+    "method": "POST",
+    "path": "/api/operations/accounts/:uid/credit",
+    "source": "backend/runtime/api.mjs",
+    "access": "existing Firebase identity and server role/ownership"
+  },
+  {
+    "method": "POST",
+    "path": "/api/operations/equipment",
+    "source": "backend/runtime/api.mjs",
+    "access": "existing Firebase identity and server role/ownership"
+  },
+  {
+    "method": "POST",
+    "path": "/api/operations/orders/:id/location",
+    "source": "backend/runtime/api.mjs",
+    "access": "existing Firebase identity and server role/ownership"
+  },
+  {
+    "method": "GET",
+    "path": "/api/operations/prospects",
+    "source": "backend/runtime/api.mjs",
+    "access": "existing Firebase identity and server role/ownership"
+  },
+  {
+    "method": "POST",
+    "path": "/api/operations/prospects",
+    "source": "backend/runtime/api.mjs",
+    "access": "existing Firebase identity and server role/ownership"
+  },
+  {
+    "method": "POST",
+    "path": "/api/operations/settings/retail-pricing",
+    "source": "backend/runtime/advanced.mjs",
+    "access": "existing Firebase identity and server role/ownership"
+  },
+  {
+    "method": "POST",
+    "path": "/api/operations/inventory/:id/tiers",
+    "source": "backend/runtime/advanced.mjs",
+    "access": "existing Firebase identity and server role/ownership"
+  },
+  {
+    "method": "GET",
+    "path": "/api/operations/drivers",
+    "source": "backend/runtime/advanced.mjs",
+    "access": "existing Firebase identity and server role/ownership"
+  },
+  {
+    "method": "GET",
+    "path": "/api/operations/staff",
+    "source": "backend/runtime/advanced.mjs",
+    "access": "existing Firebase identity and server role/ownership"
+  },
+  {
+    "method": "POST",
+    "path": "/api/operations/staff",
+    "source": "backend/runtime/advanced.mjs",
+    "access": "existing Firebase identity and server role/ownership"
+  },
+  {
+    "method": "POST",
+    "path": "/api/operations/staff/:uid/disable",
+    "source": "backend/runtime/advanced.mjs",
+    "access": "existing Firebase identity and server role/ownership"
+  },
+  {
+    "method": "GET",
+    "path": "/api/operations/modules",
+    "source": "backend/runtime/advanced.mjs",
+    "access": "existing Firebase identity and server role/ownership"
+  },
+  {
+    "method": "POST",
+    "path": "/api/operations/alerts/:id/acknowledge",
+    "source": "backend/runtime/advanced.mjs",
+    "access": "existing Firebase identity and server role/ownership"
+  },
+  {
+    "method": "POST",
+    "path": "/api/operations/orders/:id/destination",
+    "source": "backend/runtime/advanced.mjs",
+    "access": "existing Firebase identity and server role/ownership"
+  },
+  {
+    "method": "POST",
+    "path": "/api/operations/orders/:id/locations",
+    "source": "backend/runtime/advanced.mjs",
+    "access": "existing Firebase identity and server role/ownership"
+  },
+  {
+    "method": "GET",
+    "path": "/api/operations/orders/:id/route-history",
+    "source": "backend/runtime/advanced.mjs",
+    "access": "existing Firebase identity and server role/ownership"
+  },
+  {
+    "method": "POST",
+    "path": "/api/operations/routes/plan",
+    "source": "backend/runtime/advanced.mjs",
+    "access": "existing Firebase identity and server role/ownership"
+  },
+  {
+    "method": "GET",
+    "path": "/api/operations/routes/current",
+    "source": "backend/runtime/advanced.mjs",
+    "access": "existing Firebase identity and server role/ownership"
+  },
+  {
+    "method": "POST",
+    "path": "/api/operations/intakes",
+    "source": "backend/runtime/advanced.mjs",
+    "access": "existing Firebase identity and server role/ownership"
+  },
+  {
+    "method": "POST",
+    "path": "/api/operations/batches",
+    "source": "backend/runtime/advanced.mjs",
+    "access": "existing Firebase identity and server role/ownership"
+  },
+  {
+    "method": "POST",
+    "path": "/api/operations/batches/:id/advance",
+    "source": "backend/runtime/advanced.mjs",
+    "access": "existing Firebase identity and server role/ownership"
+  },
+  {
+    "method": "POST",
+    "path": "/api/operations/attendance/config",
+    "source": "backend/runtime/advanced.mjs",
+    "access": "existing Firebase identity and server role/ownership"
+  },
+  {
+    "method": "POST",
+    "path": "/api/operations/attendance/shift",
+    "source": "backend/runtime/advanced.mjs",
+    "access": "existing Firebase identity and server role/ownership"
+  },
+  {
+    "method": "POST",
+    "path": "/api/operations/attendance/punch",
+    "source": "backend/runtime/advanced.mjs",
+    "access": "existing Firebase identity and server role/ownership"
+  },
+  {
+    "method": "GET",
+    "path": "/api/operations/attendance/:id/photo",
+    "source": "backend/runtime/advanced.mjs",
+    "access": "existing Firebase identity and server role/ownership"
+  },
+  {
+    "method": "POST",
+    "path": "/api/operations/visits",
+    "source": "backend/runtime/advanced.mjs",
+    "access": "existing Firebase identity and server role/ownership"
+  },
+  {
+    "method": "POST",
+    "path": "/api/operations/prospects/:id/activate",
+    "source": "backend/runtime/advanced.mjs",
+    "access": "existing Firebase identity and server role/ownership"
+  },
+  {
+    "method": "POST",
+    "path": "/api/operations/trials",
+    "source": "backend/runtime/advanced.mjs",
+    "access": "existing Firebase identity and server role/ownership"
+  },
+  {
+    "method": "POST",
+    "path": "/api/operations/trials/:id/reconcile",
+    "source": "backend/runtime/advanced.mjs",
+    "access": "existing Firebase identity and server role/ownership"
+  },
+  {
+    "method": "POST",
+    "path": "/api/operations/executive-notes",
+    "source": "backend/runtime/advanced.mjs",
+    "access": "existing Firebase identity and server role/ownership"
+  },
+  {
+    "method": "POST",
+    "path": "/api/operations/accounts/:uid/pricing",
+    "source": "backend/runtime/advanced.mjs",
+    "access": "existing Firebase identity and server role/ownership"
+  },
+  {
+    "method": "POST",
+    "path": "/api/operations/equipment/:id/return",
+    "source": "backend/runtime/advanced.mjs",
+    "access": "existing Firebase identity and server role/ownership"
+  },
+  {
+    "method": "POST",
+    "path": "/api/operations/expenses",
+    "source": "backend/runtime/advanced.mjs",
+    "access": "existing Firebase identity and server role/ownership"
+  },
+  {
+    "method": "POST",
+    "path": "/api/operations/forecasts",
+    "source": "backend/runtime/advanced.mjs",
+    "access": "existing Firebase identity and server role/ownership"
+  },
+  {
+    "method": "POST",
+    "path": "/api/operations/orders/:id/cancel",
+    "source": "backend/runtime/advanced.mjs",
+    "access": "existing Firebase identity and server role/ownership"
+  },
+  {
+    "method": "POST",
+    "path": "/api/operations/orders/:id/issue",
+    "source": "backend/runtime/advanced.mjs",
+    "access": "existing Firebase identity and server role/ownership"
+  },
+  {
+    "method": "GET",
+    "path": "/api/operations/exports/:kind",
+    "source": "backend/runtime/advanced.mjs",
+    "access": "existing Firebase identity and server role/ownership"
+  },
+  {
+    "method": "POST",
+    "path": "/api/waafi/webhook",
+    "source": "backend/runtime/payments.mjs",
+    "access": "signed gateway webhook"
+  },
+  {
+    "method": "POST",
+    "path": "/api/operations/orders/:id/checkout",
+    "source": "backend/runtime/payments.mjs",
+    "access": "existing Firebase identity and server role/ownership"
+  },
+  {
+    "method": "POST",
+    "path": "/api/operations/orders/:id/reconcile-payment",
+    "source": "backend/runtime/payments.mjs",
+    "access": "existing Firebase identity and server role/ownership"
+  },
+  {
+    "method": "GET",
+    "path": "/api/public/prices",
+    "source": "backend/runtime/public-requests.mjs",
+    "access": "public request/prices"
+  },
+  {
+    "method": "POST",
+    "path": "/api/public/requests",
+    "source": "backend/runtime/public-requests.mjs",
+    "access": "public request/prices"
+  }
+]

@@ -1,0 +1,850 @@
+{
+  "checks": 151,
+  "errors": [],
+  "results": [
+    {
+      "flow": "buyer order -> detail -> tracking -> Back -> reload",
+      "pass": true
+    },
+    {
+      "width": 320,
+      "route": "/customer/overview",
+      "pass": true
+    },
+    {
+      "width": 320,
+      "route": "/customer/orders",
+      "pass": true
+    },
+    {
+      "width": 320,
+      "route": "/customer/new-order",
+      "pass": true
+    },
+    {
+      "width": 320,
+      "route": "/customer/account",
+      "pass": true
+    },
+    {
+      "width": 320,
+      "route": "/customer/equipment",
+      "pass": true
+    },
+    {
+      "width": 320,
+      "route": "/customer/orders/1d27a0443a40493ead938613",
+      "pass": true
+    },
+    {
+      "width": 375,
+      "route": "/customer/overview",
+      "pass": true
+    },
+    {
+      "width": 375,
+      "route": "/customer/orders",
+      "pass": true
+    },
+    {
+      "width": 375,
+      "route": "/customer/new-order",
+      "pass": true
+    },
+    {
+      "width": 375,
+      "route": "/customer/account",
+      "pass": true
+    },
+    {
+      "width": 375,
+      "route": "/customer/equipment",
+      "pass": true
+    },
+    {
+      "width": 375,
+      "route": "/customer/orders/1d27a0443a40493ead938613",
+      "pass": true
+    },
+    {
+      "width": 390,
+      "route": "/customer/overview",
+      "pass": true
+    },
+    {
+      "width": 390,
+      "route": "/customer/orders",
+      "pass": true
+    },
+    {
+      "width": 390,
+      "route": "/customer/new-order",
+      "pass": true
+    },
+    {
+      "width": 390,
+      "route": "/customer/account",
+      "pass": true
+    },
+    {
+      "width": 390,
+      "route": "/customer/equipment",
+      "pass": true
+    },
+    {
+      "width": 390,
+      "route": "/customer/orders/1d27a0443a40493ead938613",
+      "pass": true
+    },
+    {
+      "width": 430,
+      "route": "/customer/overview",
+      "pass": true
+    },
+    {
+      "width": 430,
+      "route": "/customer/orders",
+      "pass": true
+    },
+    {
+      "width": 430,
+      "route": "/customer/new-order",
+      "pass": true
+    },
+    {
+      "width": 430,
+      "route": "/customer/account",
+      "pass": true
+    },
+    {
+      "width": 430,
+      "route": "/customer/equipment",
+      "pass": true
+    },
+    {
+      "width": 430,
+      "route": "/customer/orders/1d27a0443a40493ead938613",
+      "pass": true
+    },
+    {
+      "width": 768,
+      "route": "/customer/overview",
+      "pass": true
+    },
+    {
+      "width": 768,
+      "route": "/customer/orders",
+      "pass": true
+    },
+    {
+      "width": 768,
+      "route": "/customer/new-order",
+      "pass": true
+    },
+    {
+      "width": 768,
+      "route": "/customer/account",
+      "pass": true
+    },
+    {
+      "width": 768,
+      "route": "/customer/equipment",
+      "pass": true
+    },
+    {
+      "width": 768,
+      "route": "/customer/orders/1d27a0443a40493ead938613",
+      "pass": true
+    },
+    {
+      "width": 820,
+      "route": "/customer/overview",
+      "pass": true
+    },
+    {
+      "width": 820,
+      "route": "/customer/orders",
+      "pass": true
+    },
+    {
+      "width": 820,
+      "route": "/customer/new-order",
+      "pass": true
+    },
+    {
+      "width": 820,
+      "route": "/customer/account",
+      "pass": true
+    },
+    {
+      "width": 820,
+      "route": "/customer/equipment",
+      "pass": true
+    },
+    {
+      "width": 820,
+      "route": "/customer/orders/1d27a0443a40493ead938613",
+      "pass": true
+    },
+    {
+      "width": 1024,
+      "route": "/customer/overview",
+      "pass": true
+    },
+    {
+      "width": 1024,
+      "route": "/customer/orders",
+      "pass": true
+    },
+    {
+      "width": 1024,
+      "route": "/customer/new-order",
+      "pass": true
+    },
+    {
+      "width": 1024,
+      "route": "/customer/account",
+      "pass": true
+    },
+    {
+      "width": 1024,
+      "route": "/customer/equipment",
+      "pass": true
+    },
+    {
+      "width": 1024,
+      "route": "/customer/orders/1d27a0443a40493ead938613",
+      "pass": true
+    },
+    {
+      "width": 1280,
+      "route": "/customer/overview",
+      "pass": true
+    },
+    {
+      "width": 1280,
+      "route": "/customer/orders",
+      "pass": true
+    },
+    {
+      "width": 1280,
+      "route": "/customer/new-order",
+      "pass": true
+    },
+    {
+      "width": 1280,
+      "route": "/customer/account",
+      "pass": true
+    },
+    {
+      "width": 1280,
+      "route": "/customer/equipment",
+      "pass": true
+    },
+    {
+      "width": 1280,
+      "route": "/customer/orders/1d27a0443a40493ead938613",
+      "pass": true
+    },
+    {
+      "width": 1440,
+      "route": "/customer/overview",
+      "pass": true
+    },
+    {
+      "width": 1440,
+      "route": "/customer/orders",
+      "pass": true
+    },
+    {
+      "width": 1440,
+      "route": "/customer/new-order",
+      "pass": true
+    },
+    {
+      "width": 1440,
+      "route": "/customer/account",
+      "pass": true
+    },
+    {
+      "width": 1440,
+      "route": "/customer/equipment",
+      "pass": true
+    },
+    {
+      "width": 1440,
+      "route": "/customer/orders/1d27a0443a40493ead938613",
+      "pass": true
+    },
+    {
+      "width": 1920,
+      "route": "/customer/overview",
+      "pass": true
+    },
+    {
+      "width": 1920,
+      "route": "/customer/orders",
+      "pass": true
+    },
+    {
+      "width": 1920,
+      "route": "/customer/new-order",
+      "pass": true
+    },
+    {
+      "width": 1920,
+      "route": "/customer/account",
+      "pass": true
+    },
+    {
+      "width": 1920,
+      "route": "/customer/equipment",
+      "pass": true
+    },
+    {
+      "width": 1920,
+      "route": "/customer/orders/1d27a0443a40493ead938613",
+      "pass": true
+    },
+    {
+      "role": "warehouse",
+      "width": 320,
+      "route": "/operations/overview",
+      "pass": true
+    },
+    {
+      "role": "warehouse",
+      "width": 320,
+      "route": "/operations/orders",
+      "pass": true
+    },
+    {
+      "role": "warehouse",
+      "width": 320,
+      "route": "/operations/account",
+      "pass": true
+    },
+    {
+      "role": "warehouse",
+      "width": 320,
+      "route": "/operations/stock",
+      "pass": true
+    },
+    {
+      "role": "warehouse",
+      "width": 320,
+      "route": "/operations/equipment",
+      "pass": true
+    },
+    {
+      "role": "warehouse",
+      "width": 390,
+      "route": "/operations/overview",
+      "pass": true
+    },
+    {
+      "role": "warehouse",
+      "width": 390,
+      "route": "/operations/orders",
+      "pass": true
+    },
+    {
+      "role": "warehouse",
+      "width": 390,
+      "route": "/operations/account",
+      "pass": true
+    },
+    {
+      "role": "warehouse",
+      "width": 390,
+      "route": "/operations/stock",
+      "pass": true
+    },
+    {
+      "role": "warehouse",
+      "width": 390,
+      "route": "/operations/equipment",
+      "pass": true
+    },
+    {
+      "role": "warehouse",
+      "width": 768,
+      "route": "/operations/overview",
+      "pass": true
+    },
+    {
+      "role": "warehouse",
+      "width": 768,
+      "route": "/operations/orders",
+      "pass": true
+    },
+    {
+      "role": "warehouse",
+      "width": 768,
+      "route": "/operations/account",
+      "pass": true
+    },
+    {
+      "role": "warehouse",
+      "width": 768,
+      "route": "/operations/stock",
+      "pass": true
+    },
+    {
+      "role": "warehouse",
+      "width": 768,
+      "route": "/operations/equipment",
+      "pass": true
+    },
+    {
+      "role": "warehouse",
+      "width": 1024,
+      "route": "/operations/overview",
+      "pass": true
+    },
+    {
+      "role": "warehouse",
+      "width": 1024,
+      "route": "/operations/orders",
+      "pass": true
+    },
+    {
+      "role": "warehouse",
+      "width": 1024,
+      "route": "/operations/account",
+      "pass": true
+    },
+    {
+      "role": "warehouse",
+      "width": 1024,
+      "route": "/operations/stock",
+      "pass": true
+    },
+    {
+      "role": "warehouse",
+      "width": 1024,
+      "route": "/operations/equipment",
+      "pass": true
+    },
+    {
+      "role": "warehouse",
+      "width": 1440,
+      "route": "/operations/overview",
+      "pass": true
+    },
+    {
+      "role": "warehouse",
+      "width": 1440,
+      "route": "/operations/orders",
+      "pass": true
+    },
+    {
+      "role": "warehouse",
+      "width": 1440,
+      "route": "/operations/account",
+      "pass": true
+    },
+    {
+      "role": "warehouse",
+      "width": 1440,
+      "route": "/operations/stock",
+      "pass": true
+    },
+    {
+      "role": "warehouse",
+      "width": 1440,
+      "route": "/operations/equipment",
+      "pass": true
+    },
+    {
+      "role": "driver",
+      "width": 320,
+      "route": "/operations/overview",
+      "pass": true
+    },
+    {
+      "role": "driver",
+      "width": 320,
+      "route": "/operations/orders",
+      "pass": true
+    },
+    {
+      "role": "driver",
+      "width": 320,
+      "route": "/operations/account",
+      "pass": true
+    },
+    {
+      "role": "driver",
+      "width": 390,
+      "route": "/operations/overview",
+      "pass": true
+    },
+    {
+      "role": "driver",
+      "width": 390,
+      "route": "/operations/orders",
+      "pass": true
+    },
+    {
+      "role": "driver",
+      "width": 390,
+      "route": "/operations/account",
+      "pass": true
+    },
+    {
+      "role": "driver",
+      "width": 768,
+      "route": "/operations/overview",
+      "pass": true
+    },
+    {
+      "role": "driver",
+      "width": 768,
+      "route": "/operations/orders",
+      "pass": true
+    },
+    {
+      "role": "driver",
+      "width": 768,
+      "route": "/operations/account",
+      "pass": true
+    },
+    {
+      "role": "driver",
+      "width": 1024,
+      "route": "/operations/overview",
+      "pass": true
+    },
+    {
+      "role": "driver",
+      "width": 1024,
+      "route": "/operations/orders",
+      "pass": true
+    },
+    {
+      "role": "driver",
+      "width": 1024,
+      "route": "/operations/account",
+      "pass": true
+    },
+    {
+      "role": "driver",
+      "width": 1440,
+      "route": "/operations/overview",
+      "pass": true
+    },
+    {
+      "role": "driver",
+      "width": 1440,
+      "route": "/operations/orders",
+      "pass": true
+    },
+    {
+      "role": "driver",
+      "width": 1440,
+      "route": "/operations/account",
+      "pass": true
+    },
+    {
+      "role": "admin",
+      "width": 320,
+      "route": "/operations/overview",
+      "pass": true
+    },
+    {
+      "role": "admin",
+      "width": 320,
+      "route": "/operations/orders",
+      "pass": true
+    },
+    {
+      "role": "admin",
+      "width": 320,
+      "route": "/operations/account",
+      "pass": true
+    },
+    {
+      "role": "admin",
+      "width": 320,
+      "route": "/operations/stock",
+      "pass": true
+    },
+    {
+      "role": "admin",
+      "width": 320,
+      "route": "/operations/equipment",
+      "pass": true
+    },
+    {
+      "role": "admin",
+      "width": 390,
+      "route": "/operations/overview",
+      "pass": true
+    },
+    {
+      "role": "admin",
+      "width": 390,
+      "route": "/operations/orders",
+      "pass": true
+    },
+    {
+      "role": "admin",
+      "width": 390,
+      "route": "/operations/account",
+      "pass": true
+    },
+    {
+      "role": "admin",
+      "width": 390,
+      "route": "/operations/stock",
+      "pass": true
+    },
+    {
+      "role": "admin",
+      "width": 390,
+      "route": "/operations/equipment",
+      "pass": true
+    },
+    {
+      "role": "admin",
+      "width": 768,
+      "route": "/operations/overview",
+      "pass": true
+    },
+    {
+      "role": "admin",
+      "width": 768,
+      "route": "/operations/orders",
+      "pass": true
+    },
+    {
+      "role": "admin",
+      "width": 768,
+      "route": "/operations/account",
+      "pass": true
+    },
+    {
+      "role": "admin",
+      "width": 768,
+      "route": "/operations/stock",
+      "pass": true
+    },
+    {
+      "role": "admin",
+      "width": 768,
+      "route": "/operations/equipment",
+      "pass": true
+    },
+    {
+      "role": "admin",
+      "width": 1024,
+      "route": "/operations/overview",
+      "pass": true
+    },
+    {
+      "role": "admin",
+      "width": 1024,
+      "route": "/operations/orders",
+      "pass": true
+    },
+    {
+      "role": "admin",
+      "width": 1024,
+      "route": "/operations/account",
+      "pass": true
+    },
+    {
+      "role": "admin",
+      "width": 1024,
+      "route": "/operations/stock",
+      "pass": true
+    },
+    {
+      "role": "admin",
+      "width": 1024,
+      "route": "/operations/equipment",
+      "pass": true
+    },
+    {
+      "role": "admin",
+      "width": 1440,
+      "route": "/operations/overview",
+      "pass": true
+    },
+    {
+      "role": "admin",
+      "width": 1440,
+      "route": "/operations/orders",
+      "pass": true
+    },
+    {
+      "role": "admin",
+      "width": 1440,
+      "route": "/operations/account",
+      "pass": true
+    },
+    {
+      "role": "admin",
+      "width": 1440,
+      "route": "/operations/stock",
+      "pass": true
+    },
+    {
+      "role": "admin",
+      "width": 1440,
+      "route": "/operations/equipment",
+      "pass": true
+    },
+    {
+      "role": "ceo",
+      "width": 320,
+      "route": "/operations/overview",
+      "pass": true
+    },
+    {
+      "role": "ceo",
+      "width": 320,
+      "route": "/operations/orders",
+      "pass": true
+    },
+    {
+      "role": "ceo",
+      "width": 320,
+      "route": "/operations/account",
+      "pass": true
+    },
+    {
+      "role": "ceo",
+      "width": 320,
+      "route": "/operations/stock",
+      "pass": true
+    },
+    {
+      "role": "ceo",
+      "width": 320,
+      "route": "/operations/equipment",
+      "pass": true
+    },
+    {
+      "role": "ceo",
+      "width": 390,
+      "route": "/operations/overview",
+      "pass": true
+    },
+    {
+      "role": "ceo",
+      "width": 390,
+      "route": "/operations/orders",
+      "pass": true
+    },
+    {
+      "role": "ceo",
+      "width": 390,
+      "route": "/operations/account",
+      "pass": true
+    },
+    {
+      "role": "ceo",
+      "width": 390,
+      "route": "/operations/stock",
+      "pass": true
+    },
+    {
+      "role": "ceo",
+      "width": 390,
+      "route": "/operations/equipment",
+      "pass": true
+    },
+    {
+      "role": "ceo",
+      "width": 768,
+      "route": "/operations/overview",
+      "pass": true
+    },
+    {
+      "role": "ceo",
+      "width": 768,
+      "route": "/operations/orders",
+      "pass": true
+    },
+    {
+      "role": "ceo",
+      "width": 768,
+      "route": "/operations/account",
+      "pass": true
+    },
+    {
+      "role": "ceo",
+      "width": 768,
+      "route": "/operations/stock",
+      "pass": true
+    },
+    {
+      "role": "ceo",
+      "width": 768,
+      "route": "/operations/equipment",
+      "pass": true
+    },
+    {
+      "role": "ceo",
+      "width": 1024,
+      "route": "/operations/overview",
+      "pass": true
+    },
+    {
+      "role": "ceo",
+      "width": 1024,
+      "route": "/operations/orders",
+      "pass": true
+    },
+    {
+      "role": "ceo",
+      "width": 1024,
+      "route": "/operations/account",
+      "pass": true
+    },
+    {
+      "role": "ceo",
+      "width": 1024,
+      "route": "/operations/stock",
+      "pass": true
+    },
+    {
+      "role": "ceo",
+      "width": 1024,
+      "route": "/operations/equipment",
+      "pass": true
+    },
+    {
+      "role": "ceo",
+      "width": 1440,
+      "route": "/operations/overview",
+      "pass": true
+    },
+    {
+      "role": "ceo",
+      "width": 1440,
+      "route": "/operations/orders",
+      "pass": true
+    },
+    {
+      "role": "ceo",
+      "width": 1440,
+      "route": "/operations/account",
+      "pass": true
+    },
+    {
+      "role": "ceo",
+      "width": 1440,
+      "route": "/operations/stock",
+      "pass": true
+    },
+    {
+      "role": "ceo",
+      "width": 1440,
+      "route": "/operations/equipment",
+      "pass": true
+    }
+  ]
+}

@@ -1,0 +1,172 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    function signedIn() {
+      return request.auth != null;
+    }
+
+    function uid() {
+      return request.auth.uid;
+    }
+
+    function isCeoEmail() {
+      return signedIn()
+        && request.auth.token.email == 'info@hornandharvest.com';
+    }
+
+    function accountDoc() {
+      return get(/databases/$(database)/documents/hhAccounts/$(uid()));
+    }
+
+    function accountRole() {
+      return accountDoc().data.role;
+    }
+
+    function hasAccount() {
+      return signedIn()
+        && exists(/databases/$(database)/documents/hhAccounts/$(uid()));
+    }
+
+    function roleIs(roles) {
+      return isCeoEmail() || (hasAccount() && accountRole() in roles);
+    }
+
+    function isStaff() {
+      return roleIs(['admin', 'ceo', 'warehouse', 'sales']);
+    }
+
+    function isOwner() {
+      return isCeoEmail() || roleIs(['admin', 'ceo']);
+    }
+
+    function isWarehouse() {
+      return isCeoEmail() || roleIs(['admin', 'ceo', 'warehouse']);
+    }
+
+    match /hhAccounts/{accountId} {
+      allow read: if signedIn()
+        && (uid() == accountId || isStaff());
+
+      allow create: if signedIn()
+        && uid() == accountId
+        && (!('role' in request.resource.data)
+            || request.resource.data.role == 'customer'
+            || (isCeoEmail() && request.resource.data.role == 'ceo'));
+
+      allow update: if signedIn() && (
+        (uid() == accountId
+          && (!('role' in request.resource.data)
+              || request.resource.data.role == resource.data.role
+              || (isCeoEmail() && request.resource.data.role == 'ceo')))
+        || isOwner()
+      );
+    }
+
+    match /hhOrders/{orderId} {
+      allow read: if signedIn() && (
+        resource.data.customerUid == uid()
+        || resource.data.driverUid == uid()
+        || isStaff()
+      );
+
+      allow create: if signedIn() && (
+        request.resource.data.customerUid == uid()
+        || isStaff()
+      );
+
+      allow update: if signedIn() && (
+        resource.data.customerUid == uid()
+        || resource.data.driverUid == uid()
+        || isStaff()
+      );
+    }
+
+    match /hhInventory/{productId} {
+      allow read: if signedIn();
+      // First-time seed from any signed-in user; stock edits are warehouse-only.
+      allow create: if signedIn();
+      allow update, delete: if isWarehouse();
+    }
+
+    match /hhPayments/{paymentId} {
+      allow read: if signedIn() && (
+        resource.data.customerUid == uid() || isStaff()
+      );
+      allow create: if isOwner()
+        || (signedIn() && request.resource.data.customerUid == uid());
+      allow update: if isOwner();
+    }
+
+    match /hhEquipment/{itemId} {
+      allow read: if signedIn() && (
+        !('holderUid' in resource.data)
+        || resource.data.holderUid == null
+        || resource.data.holderUid == uid()
+        || isStaff()
+      );
+      allow write: if isStaff();
+    }
+
+    match /hhProspects/{prospectId} {
+      allow read, write: if roleIs(['admin', 'ceo', 'sales']) || isCeoEmail();
+    }
+
+    match /hhAlerts/{id} {
+      allow read, write: if isStaff();
+    }
+
+    match /hhAttendance/{id} {
+      allow read, write: if isStaff();
+    }
+
+    match /hhAttendanceConfig/{id} {
+      allow read, write: if isStaff();
+    }
+
+    match /hhIntakes/{id} {
+      allow read, write: if isStaff();
+    }
+
+    match /hhBatches/{id} {
+      allow read, write: if isStaff();
+    }
+
+    match /hhVisits/{id} {
+      allow read, write: if isStaff();
+    }
+
+    match /hhTrials/{id} {
+      allow read, write: if isStaff();
+    }
+
+    match /hhNotes/{id} {
+      allow read, write: if isStaff();
+    }
+
+    match /hhExpenses/{id} {
+      allow read, write: if isStaff();
+    }
+
+    match /hhForecasts/{id} {
+      allow read, write: if isStaff();
+    }
+
+    // Legacy collections from older client helpers
+    match /users/{userId} {
+      allow read: if signedIn();
+      allow create: if signedIn()
+        && request.resource.data.uid == uid();
+      allow update: if signedIn()
+        && resource.data.uid == uid();
+    }
+
+    match /products/{productId} {
+      allow read: if true;
+      allow write: if signedIn();
+    }
+
+    match /orders/{orderId} {
+      allow read, write: if signedIn();
+    }
+  }
+}

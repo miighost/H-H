@@ -1,0 +1,17 @@
+import assert from 'node:assert/strict';
+import {seed,act,available} from '../src/operations';
+let s=seed();
+s=act(s,'order',{fruit:0,packs:360,trade:true},'Client');assert.equal(available(s,0),120);assert.equal(s.stock[0],480);
+s=act(s,'order',{fruit:0,packs:240,trade:true},'Client');assert.equal(available(s,0),0);assert.equal(s.orders[1].status,'Waiting');
+s=act(s,'batch',{fruit:0,kg:200,expected:400},'Warehouse');assert.equal(s.fresh[0],0);
+assert.throws(()=>act(s,'batch',{fruit:1,kg:200,expected:400},'Warehouse'));
+s=act(s,'release',{id:s.batches[0].id,actual:400,waste:20},'Warehouse');assert.equal(s.stock[0],880);assert.equal(available(s,0),280);assert.equal(s.orders[1].status,'Awaiting payment');
+s=act(s,'pay',{id:s.orders[1].id},'Client');
+s=act(s,'pack',{id:s.orders[0].id},'Warehouse');
+s=act(s,'dispatch',{id:s.orders[0].id},'Driver');assert.equal(s.stock[0],520);assert.equal(available(s,0),280);
+assert.throws(()=>act(s,'dispatch',{id:s.orders[0].id},'Driver'));
+s=act(s,'deliver',{id:s.orders[0].id,recipient:'Test recipient',proof:'data:image/png;base64,dGVzdA=='},'Driver');assert.equal(s.stock[0],520);
+assert.throws(()=>act(s,'adjust',{fruit:0,quantity:0,reason:'Count'},'Client'));
+s=act(s,'cancel',{id:s.orders[1].id},'Warehouse');assert.equal(available(s,0),520);
+const retail=act(seed(),'order',{fruit:0,packs:24,trade:false},'Client');assert.equal(retail.orders[0].amount,40.16);
+console.log('PASS: reservation, queue, fresh consumption, batch release, payment gate, dispatch, proof, cancellation, role and retail pricing.');

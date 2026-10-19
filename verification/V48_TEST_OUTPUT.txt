@@ -1,0 +1,66 @@
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> horn-and-harvest@1.0.48 test
+> node --test tests/*.test.mjs
+
+✔ real SQLite persists and rolls back transaction failures (83.656914ms)
+Operations API That supplier lot has already been received.
+Operations API Batch is already released.
+Operations API Warehouse access required.
+✔ intake -> nine production steps -> finished stock release exactly once (1548.158455ms)
+Operations API Warehouse access required.
+✔ shared alerts, in-account delays, acknowledgement and recovery (292.335089ms)
+Operations API This order is not yours.
+✔ tracking batches deduplicate, replay history persists, wrong driver rejected (211.940838ms)
+Operations API A precise location inside the premises is required.
+Operations API You are already signed in.
+Operations API Staff account required.
+✔ attendance geofence/network/photo checks, immutable in/out and absent records (353.989801ms)
+Operations API Record the reason for rejection.
+Operations API Administrator access required.
+✔ field visit outcomes, trial issue/return and prospect activation persist (223.532739ms)
+✔ Waafi signature rejects tampering; settlement is idempotent and amount-bound (88.40989ms)
+✔ public enquiries persist in sales queue and approved prices are explicit (132.96839ms)
+Operations API Administrator access required.
+✔ server quantity and customer contract prices, cancellation release and deposits (208.648948ms)
+Operations API Order access is not available to this staff role.
+Operations API Customer or sales account required.
+Operations API Administrator access required.
+✔ staff cannot access another role’s order or executive records (94.411154ms)
+Operations API Delivery staff access required.
+✔ equipment return, executive records, costs, forecasts and CSV exports are functional (91.972655ms)
+Operations API An existing payment attempt needs reconciliation before another is started.
+✔ checkout uses persisted order amount, deduplicates creation and reconciles refund once (164.996055ms)
+Operations API Tracking event ID was already used for another location.
+Operations API Location event is outside the delivery interval.
+✔ offline historical locations remain accepted after delivery; event IDs are immutable (99.900133ms)
+✔ anonymous and forged tokens denied (101.727934ms)
+✔ wrong project, expired tokens and other accounts denied (30.760668ms)
+✔ unverified or disabled CEO denied (40.113603ms)
+✔ missing server configuration is unavailable (2.011875ms)
+✔ verified Firebase CEO accepted (3.320837ms)
+✔ authentication fails closed and accounts start without fabricated money (644.302037ms)
+Operations API Staff access is required.
+Operations API Mango: insufficient available stock.
+✔ staff configure real stock; repeated order request reserves and charges once (803.830202ms)
+Operations API This order is not yours.
+Operations API Payment must be verified before preparation.
+Operations API Administrator access is required.
+Operations API This order cannot move to that stage.
+Operations API A delivery photo is required.
+✔ receipt idempotency, access isolation and complete warehouse/driver flow (1156.789236ms)
+✔ account deposits, equipment ownership and customer isolation (101.562841ms)
+✔ order uses server prices and preserves exact integer totals (11.355792ms)
+✔ overselling, duplicate lines and unconfigured prices rejected (0.658931ms)
+✔ credit cannot exceed the approved limit (0.981437ms)
+✔ customer cannot manipulate warehouse status (2.150675ms)
+✔ cash order cannot be prepared before verified payment (0.502855ms)
+✔ complete journey respects driver assignment, proof and notifications (0.753617ms)
+ℹ tests 28
+ℹ suites 0
+ℹ pass 28
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 6526.303085

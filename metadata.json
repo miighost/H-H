@@ -1,0 +1,6 @@
+{
+  "name": "Horn & Harvest",
+  "description": "Premium naturally dried Somali fruits, rooted in heritage and presented with modern standards of quality.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

@@ -1,0 +1,1623 @@
+{
+  "checks": 296,
+  "errors": [],
+  "results": [
+    {
+      "flow": "buyer order -> detail -> tracking -> Back -> reload",
+      "pass": true
+    },
+    {
+      "width": 320,
+      "route": "/customer/overview",
+      "pass": true
+    },
+    {
+      "width": 320,
+      "route": "/customer/orders",
+      "pass": true
+    },
+    {
+      "width": 320,
+      "route": "/customer/new-order",
+      "pass": true
+    },
+    {
+      "width": 320,
+      "route": "/customer/account",
+      "pass": true
+    },
+    {
+      "width": 320,
+      "route": "/customer/equipment",
+      "pass": true
+    },
+    {
+      "width": 320,
+      "route": "/customer/orders/3077190cab3dfa62b3031ada",
+      "pass": true
+    },
+    {
+      "width": 375,
+      "route": "/customer/overview",
+      "pass": true
+    },
+    {
+      "width": 375,
+      "route": "/customer/orders",
+      "pass": true
+    },
+    {
+      "width": 375,
+      "route": "/customer/new-order",
+      "pass": true
+    },
+    {
+      "width": 375,
+      "route": "/customer/account",
+      "pass": true
+    },
+    {
+      "width": 375,
+      "route": "/customer/equipment",
+      "pass": true
+    },
+    {
+      "width": 375,
+      "route": "/customer/orders/3077190cab3dfa62b3031ada",
+      "pass": true
+    },
+    {
+      "width": 390,
+      "route": "/customer/overview",
+      "pass": true
+    },
+    {
+      "width": 390,
+      "route": "/customer/orders",
+      "pass": true
+    },
+    {
+      "width": 390,
+      "route": "/customer/new-order",
+      "pass": true
+    },
+    {
+      "width": 390,
+      "route": "/customer/account",
+      "pass": true
+    },
+    {
+      "width": 390,
+      "route": "/customer/equipment",
+      "pass": true
+    },
+    {
+      "width": 390,
+      "route": "/customer/orders/3077190cab3dfa62b3031ada",
+      "pass": true
+    },
+    {
+      "width": 430,
+      "route": "/customer/overview",
+      "pass": true
+    },
+    {
+      "width": 430,
+      "route": "/customer/orders",
+      "pass": true
+    },
+    {
+      "width": 430,
+      "route": "/customer/new-order",
+      "pass": true
+    },
+    {
+      "width": 430,
+      "route": "/customer/account",
+      "pass": true
+    },
+    {
+      "width": 430,
+      "route": "/customer/equipment",
+      "pass": true
+    },
+    {
+      "width": 430,
+      "route": "/customer/orders/3077190cab3dfa62b3031ada",
+      "pass": true
+    },
+    {
+      "width": 768,
+      "route": "/customer/overview",
+      "pass": true
+    },
+    {
+      "width": 768,
+      "route": "/customer/orders",
+      "pass": true
+    },
+    {
+      "width": 768,
+      "route": "/customer/new-order",
+      "pass": true
+    },
+    {
+      "width": 768,
+      "route": "/customer/account",
+      "pass": true
+    },
+    {
+      "width": 768,
+      "route": "/customer/equipment",
+      "pass": true
+    },
+    {
+      "width": 768,
+      "route": "/customer/orders/3077190cab3dfa62b3031ada",
+      "pass": true
+    },
+    {
+      "width": 820,
+      "route": "/customer/overview",
+      "pass": true
+    },
+    {
+      "width": 820,
+      "route": "/customer/orders",
+      "pass": true
+    },
+    {
+      "width": 820,
+      "route": "/customer/new-order",
+      "pass": true
+    },
+    {
+      "width": 820,
+      "route": "/customer/account",
+      "pass": true
+    },
+    {
+      "width": 820,
+      "route": "/customer/equipment",
+      "pass": true
+    },
+    {
+      "width": 820,
+      "route": "/customer/orders/3077190cab3dfa62b3031ada",
+      "pass": true
+    },
+    {
+      "width": 1024,
+      "route": "/customer/overview",
+      "pass": true
+    },
+    {
+      "width": 1024,
+      "route": "/customer/orders",
+      "pass": true
+    },
+    {
+      "width": 1024,
+      "route": "/customer/new-order",
+      "pass": true
+    },
+    {
+      "width": 1024,
+      "route": "/customer/account",
+      "pass": true
+    },
+    {
+      "width": 1024,
+      "route": "/customer/equipment",
+      "pass": true
+    },
+    {
+      "width": 1024,
+      "route": "/customer/orders/3077190cab3dfa62b3031ada",
+      "pass": true
+    },
+    {
+      "width": 1280,
+      "route": "/customer/overview",
+      "pass": true
+    },
+    {
+      "width": 1280,
+      "route": "/customer/orders",
+      "pass": true
+    },
+    {
+      "width": 1280,
+      "route": "/customer/new-order",
+      "pass": true
+    },
+    {
+      "width": 1280,
+      "route": "/customer/account",
+      "pass": true
+    },
+    {
+      "width": 1280,
+      "route": "/customer/equipment",
+      "pass": true
+    },
+    {
+      "width": 1280,
+      "route": "/customer/orders/3077190cab3dfa62b3031ada",
+      "pass": true
+    },
+    {
+      "width": 1440,
+      "route": "/customer/overview",
+      "pass": true
+    },
+    {
+      "width": 1440,
+      "route": "/customer/orders",
+      "pass": true
+    },
+    {
+      "width": 1440,
+      "route": "/customer/new-order",
+      "pass": true
+    },
+    {
+      "width": 1440,
+      "route": "/customer/account",
+      "pass": true
+    },
+    {
+      "width": 1440,
+      "route": "/customer/equipment",
+      "pass": true
+    },
+    {
+      "width": 1440,
+      "route": "/customer/orders/3077190cab3dfa62b3031ada",
+      "pass": true
+    },
+    {
+      "width": 1920,
+      "route": "/customer/overview",
+      "pass": true
+    },
+    {
+      "width": 1920,
+      "route": "/customer/orders",
+      "pass": true
+    },
+    {
+      "width": 1920,
+      "route": "/customer/new-order",
+      "pass": true
+    },
+    {
+      "width": 1920,
+      "route": "/customer/account",
+      "pass": true
+    },
+    {
+      "width": 1920,
+      "route": "/customer/equipment",
+      "pass": true
+    },
+    {
+      "width": 1920,
+      "route": "/customer/orders/3077190cab3dfa62b3031ada",
+      "pass": true
+    },
+    {
+      "role": "warehouse",
+      "width": 320,
+      "route": "/operations/overview",
+      "pass": true
+    },
+    {
+      "role": "warehouse",
+      "width": 320,
+      "route": "/operations/orders",
+      "pass": true
+    },
+    {
+      "role": "warehouse",
+      "width": 320,
+      "route": "/operations/account",
+      "pass": true
+    },
+    {
+      "role": "warehouse",
+      "width": 320,
+      "route": "/operations/stock",
+      "pass": true
+    },
+    {
+      "role": "warehouse",
+      "width": 320,
+      "route": "/operations/equipment",
+      "pass": true
+    },
+    {
+      "role": "warehouse",
+      "width": 390,
+      "route": "/operations/overview",
+      "pass": true
+    },
+    {
+      "role": "warehouse",
+      "width": 390,
+      "route": "/operations/orders",
+      "pass": true
+    },
+    {
+      "role": "warehouse",
+      "width": 390,
+      "route": "/operations/account",
+      "pass": true
+    },
+    {
+      "role": "warehouse",
+      "width": 390,
+      "route": "/operations/stock",
+      "pass": true
+    },
+    {
+      "role": "warehouse",
+      "width": 390,
+      "route": "/operations/equipment",
+      "pass": true
+    },
+    {
+      "role": "warehouse",
+      "width": 768,
+      "route": "/operations/overview",
+      "pass": true
+    },
+    {
+      "role": "warehouse",
+      "width": 768,
+      "route": "/operations/orders",
+      "pass": true
+    },
+    {
+      "role": "warehouse",
+      "width": 768,
+      "route": "/operations/account",
+      "pass": true
+    },
+    {
+      "role": "warehouse",
+      "width": 768,
+      "route": "/operations/stock",
+      "pass": true
+    },
+    {
+      "role": "warehouse",
+      "width": 768,
+      "route": "/operations/equipment",
+      "pass": true
+    },
+    {
+      "role": "warehouse",
+      "width": 1024,
+      "route": "/operations/overview",
+      "pass": true
+    },
+    {
+      "role": "warehouse",
+      "width": 1024,
+      "route": "/operations/orders",
+      "pass": true
+    },
+    {
+      "role": "warehouse",
+      "width": 1024,
+      "route": "/operations/account",
+      "pass": true
+    },
+    {
+      "role": "warehouse",
+      "width": 1024,
+      "route": "/operations/stock",
+      "pass": true
+    },
+    {
+      "role": "warehouse",
+      "width": 1024,
+      "route": "/operations/equipment",
+      "pass": true
+    },
+    {
+      "role": "warehouse",
+      "width": 1440,
+      "route": "/operations/overview",
+      "pass": true
+    },
+    {
+      "role": "warehouse",
+      "width": 1440,
+      "route": "/operations/orders",
+      "pass": true
+    },
+    {
+      "role": "warehouse",
+      "width": 1440,
+      "route": "/operations/account",
+      "pass": true
+    },
+    {
+      "role": "warehouse",
+      "width": 1440,
+      "route": "/operations/stock",
+      "pass": true
+    },
+    {
+      "role": "warehouse",
+      "width": 1440,
+      "route": "/operations/equipment",
+      "pass": true
+    },
+    {
+      "role": "driver",
+      "width": 320,
+      "route": "/operations/overview",
+      "pass": true
+    },
+    {
+      "role": "driver",
+      "width": 320,
+      "route": "/operations/orders",
+      "pass": true
+    },
+    {
+      "role": "driver",
+      "width": 320,
+      "route": "/operations/account",
+      "pass": true
+    },
+    {
+      "role": "driver",
+      "width": 390,
+      "route": "/operations/overview",
+      "pass": true
+    },
+    {
+      "role": "driver",
+      "width": 390,
+      "route": "/operations/orders",
+      "pass": true
+    },
+    {
+      "role": "driver",
+      "width": 390,
+      "route": "/operations/account",
+      "pass": true
+    },
+    {
+      "role": "driver",
+      "width": 768,
+      "route": "/operations/overview",
+      "pass": true
+    },
+    {
+      "role": "driver",
+      "width": 768,
+      "route": "/operations/orders",
+      "pass": true
+    },
+    {
+      "role": "driver",
+      "width": 768,
+      "route": "/operations/account",
+      "pass": true
+    },
+    {
+      "role": "driver",
+      "width": 1024,
+      "route": "/operations/overview",
+      "pass": true
+    },
+    {
+      "role": "driver",
+      "width": 1024,
+      "route": "/operations/orders",
+      "pass": true
+    },
+    {
+      "role": "driver",
+      "width": 1024,
+      "route": "/operations/account",
+      "pass": true
+    },
+    {
+      "role": "driver",
+      "width": 1440,
+      "route": "/operations/overview",
+      "pass": true
+    },
+    {
+      "role": "driver",
+      "width": 1440,
+      "route": "/operations/orders",
+      "pass": true
+    },
+    {
+      "role": "driver",
+      "width": 1440,
+      "route": "/operations/account",
+      "pass": true
+    },
+    {
+      "role": "admin",
+      "width": 320,
+      "route": "/operations/overview",
+      "pass": true
+    },
+    {
+      "role": "admin",
+      "width": 320,
+      "route": "/operations/orders",
+      "pass": true
+    },
+    {
+      "role": "admin",
+      "width": 320,
+      "route": "/operations/account",
+      "pass": true
+    },
+    {
+      "role": "admin",
+      "width": 320,
+      "route": "/operations/stock",
+      "pass": true
+    },
+    {
+      "role": "admin",
+      "width": 320,
+      "route": "/operations/equipment",
+      "pass": true
+    },
+    {
+      "role": "admin",
+      "width": 390,
+      "route": "/operations/overview",
+      "pass": true
+    },
+    {
+      "role": "admin",
+      "width": 390,
+      "route": "/operations/orders",
+      "pass": true
+    },
+    {
+      "role": "admin",
+      "width": 390,
+      "route": "/operations/account",
+      "pass": true
+    },
+    {
+      "role": "admin",
+      "width": 390,
+      "route": "/operations/stock",
+      "pass": true
+    },
+    {
+      "role": "admin",
+      "width": 390,
+      "route": "/operations/equipment",
+      "pass": true
+    },
+    {
+      "role": "admin",
+      "width": 768,
+      "route": "/operations/overview",
+      "pass": true
+    },
+    {
+      "role": "admin",
+      "width": 768,
+      "route": "/operations/orders",
+      "pass": true
+    },
+    {
+      "role": "admin",
+      "width": 768,
+      "route": "/operations/account",
+      "pass": true
+    },
+    {
+      "role": "admin",
+      "width": 768,
+      "route": "/operations/stock",
+      "pass": true
+    },
+    {
+      "role": "admin",
+      "width": 768,
+      "route": "/operations/equipment",
+      "pass": true
+    },
+    {
+      "role": "admin",
+      "width": 1024,
+      "route": "/operations/overview",
+      "pass": true
+    },
+    {
+      "role": "admin",
+      "width": 1024,
+      "route": "/operations/orders",
+      "pass": true
+    },
+    {
+      "role": "admin",
+      "width": 1024,
+      "route": "/operations/account",
+      "pass": true
+    },
+    {
+      "role": "admin",
+      "width": 1024,
+      "route": "/operations/stock",
+      "pass": true
+    },
+    {
+      "role": "admin",
+      "width": 1024,
+      "route": "/operations/equipment",
+      "pass": true
+    },
+    {
+      "role": "admin",
+      "width": 1440,
+      "route": "/operations/overview",
+      "pass": true
+    },
+    {
+      "role": "admin",
+      "width": 1440,
+      "route": "/operations/orders",
+      "pass": true
+    },
+    {
+      "role": "admin",
+      "width": 1440,
+      "route": "/operations/account",
+      "pass": true
+    },
+    {
+      "role": "admin",
+      "width": 1440,
+      "route": "/operations/stock",
+      "pass": true
+    },
+    {
+      "role": "admin",
+      "width": 1440,
+      "route": "/operations/equipment",
+      "pass": true
+    },
+    {
+      "role": "ceo",
+      "width": 320,
+      "route": "/operations/overview",
+      "pass": true
+    },
+    {
+      "role": "ceo",
+      "width": 320,
+      "route": "/operations/orders",
+      "pass": true
+    },
+    {
+      "role": "ceo",
+      "width": 320,
+      "route": "/operations/account",
+      "pass": true
+    },
+    {
+      "role": "ceo",
+      "width": 320,
+      "route": "/operations/stock",
+      "pass": true
+    },
+    {
+      "role": "ceo",
+      "width": 320,
+      "route": "/operations/equipment",
+      "pass": true
+    },
+    {
+      "role": "ceo",
+      "width": 390,
+      "route": "/operations/overview",
+      "pass": true
+    },
+    {
+      "role": "ceo",
+      "width": 390,
+      "route": "/operations/orders",
+      "pass": true
+    },
+    {
+      "role": "ceo",
+      "width": 390,
+      "route": "/operations/account",
+      "pass": true
+    },
+    {
+      "role": "ceo",
+      "width": 390,
+      "route": "/operations/stock",
+      "pass": true
+    },
+    {
+      "role": "ceo",
+      "width": 390,
+      "route": "/operations/equipment",
+      "pass": true
+    },
+    {
+      "role": "ceo",
+      "width": 768,
+      "route": "/operations/overview",
+      "pass": true
+    },
+    {
+      "role": "ceo",
+      "width": 768,
+      "route": "/operations/orders",
+      "pass": true
+    },
+    {
+      "role": "ceo",
+      "width": 768,
+      "route": "/operations/account",
+      "pass": true
+    },
+    {
+      "role": "ceo",
+      "width": 768,
+      "route": "/operations/stock",
+      "pass": true
+    },
+    {
+      "role": "ceo",
+      "width": 768,
+      "route": "/operations/equipment",
+      "pass": true
+    },
+    {
+      "role": "ceo",
+      "width": 1024,
+      "route": "/operations/overview",
+      "pass": true
+    },
+    {
+      "role": "ceo",
+      "width": 1024,
+      "route": "/operations/orders",
+      "pass": true
+    },
+    {
+      "role": "ceo",
+      "width": 1024,
+      "route": "/operations/account",
+      "pass": true
+    },
+    {
+      "role": "ceo",
+      "width": 1024,
+      "route": "/operations/stock",
+      "pass": true
+    },
+    {
+      "role": "ceo",
+      "width": 1024,
+      "route": "/operations/equipment",
+      "pass": true
+    },
+    {
+      "role": "ceo",
+      "width": 1440,
+      "route": "/operations/overview",
+      "pass": true
+    },
+    {
+      "role": "ceo",
+      "width": 1440,
+      "route": "/operations/orders",
+      "pass": true
+    },
+    {
+      "role": "ceo",
+      "width": 1440,
+      "route": "/operations/account",
+      "pass": true
+    },
+    {
+      "role": "ceo",
+      "width": 1440,
+      "route": "/operations/stock",
+      "pass": true
+    },
+    {
+      "role": "ceo",
+      "width": 1440,
+      "route": "/operations/equipment",
+      "pass": true
+    },
+    {
+      "flow": "admin receipt -> warehouse prepare/ready -> driver dispatch/arrive/proof -> buyer invoice PDF",
+      "pass": true
+    },
+    {
+      "role": "admin",
+      "width": 320,
+      "route": "/operations/alerts",
+      "pass": true
+    },
+    {
+      "role": "admin",
+      "width": 320,
+      "route": "/operations/attendance",
+      "pass": true
+    },
+    {
+      "role": "admin",
+      "width": 320,
+      "route": "/operations/routes",
+      "pass": true
+    },
+    {
+      "role": "admin",
+      "width": 320,
+      "route": "/operations/fleet",
+      "pass": true
+    },
+    {
+      "role": "admin",
+      "width": 320,
+      "route": "/operations/intakes",
+      "pass": true
+    },
+    {
+      "role": "admin",
+      "width": 320,
+      "route": "/operations/batches",
+      "pass": true
+    },
+    {
+      "role": "admin",
+      "width": 320,
+      "route": "/operations/forecasts",
+      "pass": true
+    },
+    {
+      "role": "admin",
+      "width": 320,
+      "route": "/operations/visits",
+      "pass": true
+    },
+    {
+      "role": "admin",
+      "width": 320,
+      "route": "/operations/trials",
+      "pass": true
+    },
+    {
+      "role": "admin",
+      "width": 320,
+      "route": "/operations/notes",
+      "pass": true
+    },
+    {
+      "role": "admin",
+      "width": 320,
+      "route": "/operations/expenses",
+      "pass": true
+    },
+    {
+      "role": "admin",
+      "width": 320,
+      "route": "/operations/staff",
+      "pass": true
+    },
+    {
+      "role": "admin",
+      "width": 320,
+      "route": "/operations/pricing",
+      "pass": true
+    },
+    {
+      "role": "admin",
+      "width": 320,
+      "route": "/operations/prospects",
+      "pass": true
+    },
+    {
+      "role": "admin",
+      "width": 320,
+      "route": "/operations/market",
+      "pass": true
+    },
+    {
+      "role": "admin",
+      "width": 320,
+      "route": "/operations/reference",
+      "pass": true
+    },
+    {
+      "role": "admin",
+      "width": 390,
+      "route": "/operations/alerts",
+      "pass": true
+    },
+    {
+      "role": "admin",
+      "width": 390,
+      "route": "/operations/attendance",
+      "pass": true
+    },
+    {
+      "role": "admin",
+      "width": 390,
+      "route": "/operations/routes",
+      "pass": true
+    },
+    {
+      "role": "admin",
+      "width": 390,
+      "route": "/operations/fleet",
+      "pass": true
+    },
+    {
+      "role": "admin",
+      "width": 390,
+      "route": "/operations/intakes",
+      "pass": true
+    },
+    {
+      "role": "admin",
+      "width": 390,
+      "route": "/operations/batches",
+      "pass": true
+    },
+    {
+      "role": "admin",
+      "width": 390,
+      "route": "/operations/forecasts",
+      "pass": true
+    },
+    {
+      "role": "admin",
+      "width": 390,
+      "route": "/operations/visits",
+      "pass": true
+    },
+    {
+      "role": "admin",
+      "width": 390,
+      "route": "/operations/trials",
+      "pass": true
+    },
+    {
+      "role": "admin",
+      "width": 390,
+      "route": "/operations/notes",
+      "pass": true
+    },
+    {
+      "role": "admin",
+      "width": 390,
+      "route": "/operations/expenses",
+      "pass": true
+    },
+    {
+      "role": "admin",
+      "width": 390,
+      "route": "/operations/staff",
+      "pass": true
+    },
+    {
+      "role": "admin",
+      "width": 390,
+      "route": "/operations/pricing",
+      "pass": true
+    },
+    {
+      "role": "admin",
+      "width": 390,
+      "route": "/operations/prospects",
+      "pass": true
+    },
+    {
+      "role": "admin",
+      "width": 390,
+      "route": "/operations/market",
+      "pass": true
+    },
+    {
+      "role": "admin",
+      "width": 390,
+      "route": "/operations/reference",
+      "pass": true
+    },
+    {
+      "role": "admin",
+      "width": 768,
+      "route": "/operations/alerts",
+      "pass": true
+    },
+    {
+      "role": "admin",
+      "width": 768,
+      "route": "/operations/attendance",
+      "pass": true
+    },
+    {
+      "role": "admin",
+      "width": 768,
+      "route": "/operations/routes",
+      "pass": true
+    },
+    {
+      "role": "admin",
+      "width": 768,
+      "route": "/operations/fleet",
+      "pass": true
+    },
+    {
+      "role": "admin",
+      "width": 768,
+      "route": "/operations/intakes",
+      "pass": true
+    },
+    {
+      "role": "admin",
+      "width": 768,
+      "route": "/operations/batches",
+      "pass": true
+    },
+    {
+      "role": "admin",
+      "width": 768,
+      "route": "/operations/forecasts",
+      "pass": true
+    },
+    {
+      "role": "admin",
+      "width": 768,
+      "route": "/operations/visits",
+      "pass": true
+    },
+    {
+      "role": "admin",
+      "width": 768,
+      "route": "/operations/trials",
+      "pass": true
+    },
+    {
+      "role": "admin",
+      "width": 768,
+      "route": "/operations/notes",
+      "pass": true
+    },
+    {
+      "role": "admin",
+      "width": 768,
+      "route": "/operations/expenses",
+      "pass": true
+    },
+    {
+      "role": "admin",
+      "width": 768,
+      "route": "/operations/staff",
+      "pass": true
+    },
+    {
+      "role": "admin",
+      "width": 768,
+      "route": "/operations/pricing",
+      "pass": true
+    },
+    {
+      "role": "admin",
+      "width": 768,
+      "route": "/operations/prospects",
+      "pass": true
+    },
+    {
+      "role": "admin",
+      "width": 768,
+      "route": "/operations/market",
+      "pass": true
+    },
+    {
+      "role": "admin",
+      "width": 768,
+      "route": "/operations/reference",
+      "pass": true
+    },
+    {
+      "role": "admin",
+      "width": 1440,
+      "route": "/operations/alerts",
+      "pass": true
+    },
+    {
+      "role": "admin",
+      "width": 1440,
+      "route": "/operations/attendance",
+      "pass": true
+    },
+    {
+      "role": "admin",
+      "width": 1440,
+      "route": "/operations/routes",
+      "pass": true
+    },
+    {
+      "role": "admin",
+      "width": 1440,
+      "route": "/operations/fleet",
+      "pass": true
+    },
+    {
+      "role": "admin",
+      "width": 1440,
+      "route": "/operations/intakes",
+      "pass": true
+    },
+    {
+      "role": "admin",
+      "width": 1440,
+      "route": "/operations/batches",
+      "pass": true
+    },
+    {
+      "role": "admin",
+      "width": 1440,
+      "route": "/operations/forecasts",
+      "pass": true
+    },
+    {
+      "role": "admin",
+      "width": 1440,
+      "route": "/operations/visits",
+      "pass": true
+    },
+    {
+      "role": "admin",
+      "width": 1440,
+      "route": "/operations/trials",
+      "pass": true
+    },
+    {
+      "role": "admin",
+      "width": 1440,
+      "route": "/operations/notes",
+      "pass": true
+    },
+    {
+      "role": "admin",
+      "width": 1440,
+      "route": "/operations/expenses",
+      "pass": true
+    },
+    {
+      "role": "admin",
+      "width": 1440,
+      "route": "/operations/staff",
+      "pass": true
+    },
+    {
+      "role": "admin",
+      "width": 1440,
+      "route": "/operations/pricing",
+      "pass": true
+    },
+    {
+      "role": "admin",
+      "width": 1440,
+      "route": "/operations/prospects",
+      "pass": true
+    },
+    {
+      "role": "admin",
+      "width": 1440,
+      "route": "/operations/market",
+      "pass": true
+    },
+    {
+      "role": "admin",
+      "width": 1440,
+      "route": "/operations/reference",
+      "pass": true
+    },
+    {
+      "legacyAlias": "/master-blueprint",
+      "destination": "/operations/overview",
+      "pass": true
+    },
+    {
+      "legacyAlias": "/workflow",
+      "destination": "/operations/overview",
+      "pass": true
+    },
+    {
+      "legacyAlias": "/warehouse-demo",
+      "destination": "/warehouse/overview",
+      "pass": true
+    },
+    {
+      "legacyAlias": "/operation-demo",
+      "destination": "/operations/overview",
+      "pass": true
+    },
+    {
+      "legacyAlias": "/operations-demo",
+      "destination": "/operations/overview",
+      "pass": true
+    },
+    {
+      "legacyAlias": "/ceo-demo",
+      "destination": "/ceo/overview",
+      "pass": true
+    },
+    {
+      "legacyAlias": "/ceo-desktop",
+      "destination": "/ceo/overview",
+      "pass": true
+    },
+    {
+      "legacyAlias": "/staff-attendance",
+      "destination": "/operations/attendance",
+      "pass": true
+    },
+    {
+      "legacyAlias": "/attendance",
+      "destination": "/operations/attendance",
+      "pass": true
+    },
+    {
+      "legacyAlias": "/order",
+      "destination": "/customer/new-order",
+      "pass": true
+    },
+    {
+      "legacyAlias": "/orders",
+      "destination": "/customer/orders",
+      "pass": true
+    },
+    {
+      "legacyAlias": "/invoice",
+      "destination": "/customer/orders",
+      "pass": true
+    },
+    {
+      "legacyAlias": "/login",
+      "destination": "/customer",
+      "pass": true
+    },
+    {
+      "legacyAlias": "/consignee",
+      "destination": "/customer/overview",
+      "pass": true
+    },
+    {
+      "legacyAlias": "/dashboard",
+      "destination": "/customer/overview",
+      "pass": true
+    },
+    {
+      "legacyAlias": "/admin-panel",
+      "destination": "/admin/overview",
+      "pass": true
+    },
+    {
+      "legacyAlias": "/field-sales",
+      "destination": "/sales/prospects",
+      "pass": true
+    },
+    {
+      "legacyHash": "top",
+      "destination": "/operations/overview",
+      "pass": true
+    },
+    {
+      "legacyHash": "warehouse-home",
+      "destination": "/warehouse/overview",
+      "pass": true
+    },
+    {
+      "legacyHash": "wh-today-production",
+      "destination": "/warehouse/batches",
+      "pass": true
+    },
+    {
+      "legacyHash": "wh-intake",
+      "destination": "/warehouse/intakes",
+      "pass": true
+    },
+    {
+      "legacyHash": "wh-process",
+      "destination": "/warehouse/batches",
+      "pass": true
+    },
+    {
+      "legacyHash": "wh-stock",
+      "destination": "/warehouse/stock",
+      "pass": true
+    },
+    {
+      "legacyHash": "wh-orders",
+      "destination": "/warehouse/orders",
+      "pass": true
+    },
+    {
+      "legacyHash": "wh-attendance",
+      "destination": "/warehouse/attendance",
+      "pass": true
+    },
+    {
+      "legacyHash": "attendance-in",
+      "destination": "/warehouse/attendance",
+      "pass": true
+    },
+    {
+      "legacyHash": "attendance-out",
+      "destination": "/warehouse/attendance",
+      "pass": true
+    },
+    {
+      "legacyHash": "wh-season",
+      "destination": "/warehouse/forecasts",
+      "pass": true
+    },
+    {
+      "legacyHash": "wh-dispatch",
+      "destination": "/warehouse/orders",
+      "pass": true
+    },
+    {
+      "legacyHash": "driver-home",
+      "destination": "/driver/overview",
+      "pass": true
+    },
+    {
+      "legacyHash": "driver-route",
+      "destination": "/driver/routes",
+      "pass": true
+    },
+    {
+      "legacyHash": "driver-stop",
+      "destination": "/driver/orders",
+      "pass": true
+    },
+    {
+      "legacyHash": "delivery-proof",
+      "destination": "/driver/orders",
+      "pass": true
+    },
+    {
+      "legacyHash": "sales-home",
+      "destination": "/sales/prospects",
+      "pass": true
+    },
+    {
+      "legacyHash": "sales-visit",
+      "destination": "/sales/visits",
+      "pass": true
+    },
+    {
+      "legacyHash": "sales-outcome",
+      "destination": "/sales/visits",
+      "pass": true
+    },
+    {
+      "legacyHash": "sales-activate",
+      "destination": "/sales/prospects",
+      "pass": true
+    },
+    {
+      "legacyHash": "sales-trial",
+      "destination": "/sales/trials",
+      "pass": true
+    },
+    {
+      "legacyHash": "customer-home",
+      "destination": "/customer/overview",
+      "pass": true
+    },
+    {
+      "legacyHash": "customer-order",
+      "destination": "/customer/new-order",
+      "pass": true
+    },
+    {
+      "legacyHash": "customer-track",
+      "destination": "/customer/orders",
+      "pass": true
+    },
+    {
+      "legacyHash": "customer-invoices",
+      "destination": "/customer/orders",
+      "pass": true
+    },
+    {
+      "legacyHash": "customer-notifications",
+      "destination": "/customer/overview",
+      "pass": true
+    },
+    {
+      "legacyHash": "growth-home",
+      "destination": "/sales/prospects",
+      "pass": true
+    },
+    {
+      "legacyHash": "ceo-home",
+      "destination": "/ceo/overview",
+      "pass": true
+    },
+    {
+      "legacyHash": "permissions",
+      "destination": "/operations/reference",
+      "pass": true
+    },
+    {
+      "legacyHash": "today",
+      "destination": "/ceo/overview",
+      "pass": true
+    },
+    {
+      "legacyHash": "work",
+      "destination": "/ceo/notes",
+      "pass": true
+    },
+    {
+      "legacyHash": "business",
+      "destination": "/ceo/account",
+      "pass": true
+    },
+    {
+      "legacyHash": "mogintel",
+      "destination": "/ceo/market",
+      "pass": true
+    },
+    {
+      "legacyHash": "reference",
+      "destination": "/ceo/reference",
+      "pass": true
+    },
+    {
+      "legacyHash": "pricing",
+      "destination": "/ceo/pricing",
+      "pass": true
+    },
+    {
+      "legacyHash": "brand",
+      "destination": "/ceo/reference",
+      "pass": true
+    },
+    {
+      "legacyHash": "pitchlib",
+      "destination": "/ceo/notes",
+      "pass": true
+    },
+    {
+      "legacyHash": "strategy",
+      "destination": "/ceo/notes",
+      "pass": true
+    },
+    {
+      "legacyHash": "intelligence",
+      "destination": "/ceo/market",
+      "pass": true
+    },
+    {
+      "legacyHash": "growth",
+      "destination": "/ceo/prospects",
+      "pass": true
+    },
+    {
+      "legacyHash": "prospects",
+      "destination": "/ceo/prospects",
+      "pass": true
+    },
+    {
+      "legacyHash": "coach",
+      "destination": "/ceo/notes",
+      "pass": true
+    },
+    {
+      "legacyHash": "planner",
+      "destination": "/ceo/notes",
+      "pass": true
+    },
+    {
+      "legacyHash": "decisions",
+      "destination": "/ceo/notes",
+      "pass": true
+    },
+    {
+      "legacyHash": "meetings",
+      "destination": "/ceo/notes",
+      "pass": true
+    },
+    {
+      "legacyHash": "finance",
+      "destination": "/ceo/account",
+      "pass": true
+    },
+    {
+      "legacyHash": "journal",
+      "destination": "/ceo/notes",
+      "pass": true
+    },
+    {
+      "legacyHash": "tools",
+      "destination": "/ceo/reference",
+      "pass": true
+    },
+    {
+      "publicAnchor": "#home",
+      "pass": true
+    },
+    {
+      "publicAnchor": "#story",
+      "pass": true
+    },
+    {
+      "publicAnchor": "#collection",
+      "pass": true
+    },
+    {
+      "publicAnchor": "#quality",
+      "pass": true
+    },
+    {
+      "publicAnchor": "#partnership",
+      "pass": true
+    },
+    {
+      "publicAnchor": "#contact",
+      "pass": true
+    },
+    {
+      "publicAnchor": "#buyer-services",
+      "pass": true
+    },
+    {
+      "publicFile": "/documents/horn-and-harvest-company-profile.pdf",
+      "pass": true
+    },
+    {
+      "publicWidth": 320,
+      "pass": true
+    },
+    {
+      "publicWidth": 375,
+      "pass": true
+    },
+    {
+      "publicWidth": 390,
+      "pass": true
+    },
+    {
+      "publicWidth": 430,
+      "pass": true
+    },
+    {
+      "publicWidth": 768,
+      "pass": true
+    },
+    {
+      "publicWidth": 1024,
+      "pass": true
+    },
+    {
+      "publicWidth": 1440,
+      "pass": true
+    }
+  ]
+}

@@ -1,0 +1,179 @@
+{
+  "baselineFiles": 136,
+  "missingNonGeneratedFiles": [],
+  "approvedAssetFilesUnchanged": 43,
+  "assets": [
+    {
+      "path": "public/documents/horn-and-harvest-company-profile.pdf",
+      "unchanged": true
+    },
+    {
+      "path": "public/media/packaging-detail.jpg",
+      "unchanged": true
+    },
+    {
+      "path": "public/media/packaging-detail.mp4",
+      "unchanged": true
+    },
+    {
+      "path": "public/media/packaging-machine.jpg",
+      "unchanged": true
+    },
+    {
+      "path": "public/media/packaging-machine.mp4",
+      "unchanged": true
+    },
+    {
+      "path": "src/assets/images/brand_logo.svg",
+      "unchanged": true
+    },
+    {
+      "path": "src/assets/images/brand_logo_white.svg",
+      "unchanged": true
+    },
+    {
+      "path": "src/assets/images/campaign-craft.jpeg",
+      "unchanged": true
+    },
+    {
+      "path": "src/assets/images/campaign-mango.jpeg",
+      "unchanged": true
+    },
+    {
+      "path": "src/assets/images/campaign-sharing.jpeg",
+      "unchanged": true
+    },
+    {
+      "path": "src/assets/images/farmer-hands-selection.png",
+      "unchanged": true
+    },
+    {
+      "path": "src/assets/images/fruit-isbaandheys-approved.jpeg",
+      "unchanged": true
+    },
+    {
+      "path": "src/assets/images/fruit-isbaandheys-premium.png",
+      "unchanged": true
+    },
+    {
+      "path": "src/assets/images/fruit-lady-soft-premium.png",
+      "unchanged": true
+    },
+    {
+      "path": "src/assets/images/fruit-lady-spicy-premium.png",
+      "unchanged": true
+    },
+    {
+      "path": "src/assets/images/fruit-mango-premium.png",
+      "unchanged": true
+    },
+    {
+      "path": "src/assets/images/fruit-papaya-premium.png",
+      "unchanged": true
+    },
+    {
+      "path": "src/assets/images/mango-product-refined.png",
+      "unchanged": true
+    },
+    {
+      "path": "src/assets/images/official-logo-gold.jpeg",
+      "unchanged": true
+    },
+    {
+      "path": "src/assets/images/official-logo-master.jpeg",
+      "unchanged": true
+    },
+    {
+      "path": "src/assets/images/official-logo-transparent.png",
+      "unchanged": true
+    },
+    {
+      "path": "src/assets/images/presentation-box.jpeg",
+      "unchanged": true
+    },
+    {
+      "path": "src/assets/images/process-hygiene-premium.png",
+      "unchanged": true
+    },
+    {
+      "path": "src/assets/images/regenerated_image_1781793815025.jpg",
+      "unchanged": true
+    },
+    {
+      "path": "src/assets/images/regenerated_image_1781793816992.jpg",
+      "unchanged": true
+    },
+    {
+      "path": "src/assets/images/regenerated_image_1781793818712.jpg",
+      "unchanged": true
+    },
+    {
+      "path": "src/assets/images/regenerated_image_1781793820270.jpg",
+      "unchanged": true
+    },
+    {
+      "path": "src/assets/images/regenerated_image_1781793821719.jpg",
+      "unchanged": true
+    },
+    {
+      "path": "src/assets/images/regenerated_image_1781793823186.jpg",
+      "unchanged": true
+    },
+    {
+      "path": "src/assets/images/regenerated_image_1781793824797.jpg",
+      "unchanged": true
+    },
+    {
+      "path": "src/assets/images/regenerated_image_1781793826798.jpg",
+      "unchanged": true
+    },
+    {
+      "path": "src/assets/images/regenerated_image_1781794338043.jpg",
+      "unchanged": true
+    },
+    {
+      "path": "src/assets/images/regenerated_image_1781794341750.png",
+      "unchanged": true
+    },
+    {
+      "path": "src/assets/images/regenerated_image_1782137880619.jpg",
+      "unchanged": true
+    },
+    {
+      "path": "src/assets/images/regenerated_image_1782138961910.jpg",
+      "unchanged": true
+    },
+    {
+      "path": "src/assets/images/regenerated_image_1782223583418.png",
+      "unchanged": true
+    },
+    {
+      "path": "src/assets/images/regenerated_image_1782223744401.png",
+      "unchanged": true
+    },
+    {
+      "path": "src/assets/images/regenerated_image_1782744371077.jpg",
+      "unchanged": true
+    },
+    {
+      "path": "src/assets/images/somali-craft-4k.jpg",
+      "unchanged": true
+    },
+    {
+      "path": "src/assets/images/somali-mango-orchard-hero.png",
+      "unchanged": true
+    },
+    {
+      "path": "src/assets/images/somali-orchard-hero-4k.jpg",
+      "unchanged": true
+    },
+    {
+      "path": "src/assets/images/standing-pouch-family.png",
+      "unchanged": true
+    },
+    {
+      "path": "src/assets/images/standing-pouch-refined.png",
+      "unchanged": true
+    }
+  ]
+}

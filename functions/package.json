@@ -1,0 +1,14 @@
+{
+  "name": "horn-and-harvest-api",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": "22"
+  },
+  "main": "index.mjs",
+  "dependencies": {
+    "express": "^4.22.3",
+    "firebase-admin": "^14.5.0",
+    "firebase-functions": "^7.4.0"
+  }
+}

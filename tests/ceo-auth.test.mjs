@@ -1,0 +1,10 @@
+import test from 'node:test';import assert from 'node:assert/strict';import {authorizeCeo} from '../worker/ceo-auth.mjs';
+const token=(extra={})=>'header.'+Buffer.from(JSON.stringify({aud:'hornandharvest',iss:'https://securetoken.google.com/hornandharvest',sub:'ceo',exp:Date.now()/1000+3600,...extra})).toString('base64url')+'.signature';
+const request=t=>new Request('https://example.test/api/ceo/desktop',{headers:t?{Authorization:'Bearer '+t}:{}});
+const lookup=(extra={})=>async()=>Response.json({users:[{localId:'ceo',email:'info@hornandharvest.com',emailVerified:true,...extra}]});
+const opts=(fetcher=lookup(),extra={})=>({fetcher,apiKey:'test-key',projectId:'hornandharvest',authorisedEmail:'info@hornandharvest.com',...extra});
+test('anonymous and forged tokens denied',async()=>{assert.equal(await authorizeCeo(request(),opts()),401);assert.equal(await authorizeCeo(request(token()),opts(async()=>new Response('',{status:400}))),401)});
+test('wrong project, expired tokens and other accounts denied',async()=>{assert.equal(await authorizeCeo(request(token({aud:'other'})),opts()),401);assert.equal(await authorizeCeo(request(token({exp:1})),opts()),401);assert.equal(await authorizeCeo(request(token()),opts(lookup({email:'other@example.test'}))),403)});
+test('unverified or disabled CEO denied',async()=>{assert.equal(await authorizeCeo(request(token()),opts(lookup({emailVerified:false}))),403);assert.equal(await authorizeCeo(request(token()),opts(lookup({disabled:true}))),403)});
+test('missing server configuration is unavailable',async()=>{assert.equal(await authorizeCeo(request(token()),{}),503)});
+test('verified Firebase CEO accepted',async()=>{assert.equal(await authorizeCeo(request(token()),opts()),200)});

@@ -1,0 +1,1469 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Horn & Harvest — CEO Control Desktop V3.3.3 — Mogadishu Edition.1 — Mogadishu Edition</title>
+<style>
+  :root{
+    --cream:#F5F0E1;
+    --cream2:#FFFDF8;
+    --green:#1C3B2F;
+    --green2:#28473B;
+    --gold:#D4AF37;
+    --gold2:#C7A53A;
+    --ink:#2E3632;
+    --muted:#77776F;
+    --line:rgba(28,59,47,.095);
+    --shadow:0 18px 52px rgba(28,59,47,.075);
+    --danger:#715E55;
+    --ok:#425C50;
+    --warn:#8A7440;
+  }
+  *{box-sizing:border-box}
+  body{
+    margin:0;
+    background:linear-gradient(145deg,var(--cream),#F2E8D5);
+    color:var(--ink);
+    font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  }
+  .app{display:grid;grid-template-columns:250px 1fr;min-height:100vh}
+  aside{
+    background:var(--green);
+    color:#fff;
+    padding:28px 18px;
+    position:sticky;top:0;height:100vh;
+  }
+  .brand{padding:0 10px 24px;border-bottom:1px solid rgba(255,255,255,.14)}
+  .brand h1{font-family:Georgia,serif;font-weight:600;letter-spacing:.4px;margin:0;color:#E6C86A;font-size:25px}
+  .brand p{margin:6px 0 0;color:#D8E2DD;font-size:12px;letter-spacing:1.4px;text-transform:uppercase}
+  nav{display:grid;gap:8px;margin-top:22px}
+  nav button{
+    width:100%;border:0;background:transparent;color:#E7EEE9;text-align:left;padding:12px 13px;border-radius:12px;
+    font-size:14px;cursor:pointer;
+  }
+  nav button.active, nav button:hover{background:rgba(255,255,255,.09);color:#fff}
+  .side-foot{position:absolute;left:18px;right:18px;bottom:24px;font-size:12px;color:#C3D0CA}
+  main{padding:28px 34px 42px;max-width:1500px;width:100%;margin:0 auto}
+  .topbar{display:flex;justify-content:space-between;gap:18px;align-items:flex-start;margin-bottom:24px}
+  .greeting h2{font-family:Georgia,serif;color:var(--green);font-size:34px;margin:0 0 6px;font-weight:500}
+  .greeting p{margin:0;color:var(--muted)}
+  .datebox{text-align:right}
+  .datebox .time{font-size:30px;font-family:Georgia,serif;color:var(--green)}
+  .datebox .date{color:var(--muted);font-size:13px}
+  .grid{display:grid;gap:18px}
+  .kpis{grid-template-columns:repeat(4,minmax(0,1fr));margin-bottom:18px}
+  .card{
+    background:rgba(255,253,248,.92);border:1px solid var(--line);border-radius:18px;box-shadow:var(--shadow);padding:20px;
+  }
+  .card h3{font-family:Georgia,serif;color:var(--green);margin:0 0 12px;font-size:20px;font-weight:600}
+  .sub{font-size:12px;color:var(--muted);margin-top:-6px;margin-bottom:14px}
+  .kpi strong{display:block;font-size:27px;color:var(--green)}
+  .kpi small{color:var(--muted)}
+  .status{display:inline-flex;gap:7px;align-items:center;font-size:12px;margin-top:10px}
+  .dot{width:8px;height:8px;border-radius:50%;background:var(--ok)}
+  .dot.warn{background:var(--warn)}
+  .dot.danger{background:var(--danger)}
+  .cols{grid-template-columns:1.2fr .8fr;margin-bottom:18px}
+  .priority-item,.decision-item,.meeting-item,.note-item{
+    border-top:1px solid var(--line);padding:12px 0;display:flex;gap:10px;align-items:flex-start
+  }
+  .priority-item:first-child,.decision-item:first-child,.meeting-item:first-child,.note-item:first-child{border-top:0}
+  input[type="checkbox"]{margin-top:4px;accent-color:var(--green)}
+  .grow{flex:1}
+  .muted{color:var(--muted);font-size:12px}
+  .pill{display:inline-block;border:1px solid var(--line);padding:4px 8px;border-radius:999px;font-size:11px;color:var(--green);background:#fff}
+  .pill.gold{border-color:rgba(184,148,58,.35);color:#7C6321;background:#FFF9E7}
+  .pill.red{border-color:rgba(158,78,61,.25);color:var(--danger);background:#FFF5F2}
+  .actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+  button.primary,button.secondary,button.danger-btn{
+    border-radius:10px;padding:9px 12px;border:1px solid transparent;cursor:pointer;font-weight:600;font-size:13px
+  }
+  button.primary{background:var(--green);color:#fff}
+  button.secondary{background:#fff;color:var(--green);border-color:var(--line)}
+  button.danger-btn{background:#fff;color:var(--danger);border-color:rgba(158,78,61,.25)}
+  .brief{
+    border-left:4px solid var(--gold);background:linear-gradient(90deg,rgba(212,175,55,.10),rgba(255,255,255,.4));
+    padding:14px 16px;border-radius:12px;line-height:1.55
+  }
+  .health{display:grid;grid-template-columns:repeat(5,1fr);gap:10px}
+  .health .mini{background:#fff;border:1px solid var(--line);border-radius:14px;padding:12px}
+  .health .mini b{display:block;color:var(--green);margin-bottom:6px}
+  .section{display:none}
+  .section.active{display:block}
+  textarea,input,select{
+    width:100%;border:1px solid var(--line);border-radius:10px;padding:10px 11px;background:#fff;color:var(--ink);font:inherit
+  }
+  label{font-size:12px;color:var(--muted);display:block;margin:10px 0 6px}
+  .form-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+  .table{width:100%;border-collapse:collapse;font-size:13px}
+  .table th,.table td{padding:11px 8px;border-bottom:1px solid var(--line);text-align:left}
+  .table th{color:var(--green);font-family:Georgia,serif;font-size:14px}
+  .calc{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;max-width:330px}
+  .calc button{padding:14px;border:1px solid var(--line);background:#fff;border-radius:10px;font-size:16px;cursor:pointer}
+  .calc button.op{background:var(--green);color:#fff}
+  .calc-display{max-width:330px;font-size:24px;text-align:right;margin-bottom:10px}
+  .footer-note{margin-top:24px;color:var(--muted);font-size:12px;text-align:center}
+
+  .eyebrow{font-size:11px;text-transform:uppercase;letter-spacing:1.6px;color:var(--gold);font-weight:700}
+  .source{display:inline-block;font-size:10px;padding:4px 7px;border-radius:999px;border:1px solid var(--line);background:#fff;color:var(--muted)}
+  .source.live{color:var(--ok);border-color:rgba(45,106,79,.25);background:#F5FBF7}
+  .source.manual{color:#7C6321;border-color:rgba(212,175,55,.32);background:#FFF9E7}
+  .source.pending{color:var(--muted);background:#F7F7F4}
+  .section-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+  .module-card{background:rgba(255,253,248,.94);border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow);padding:18px}
+  .module-card h4{font-family:Georgia,serif;color:var(--green);font-size:18px;margin:0 0 8px}
+  .metric-row{display:flex;justify-content:space-between;gap:12px;padding:9px 0;border-top:1px solid var(--line)}
+  .metric-row:first-child{border-top:0}
+  .metric-row strong{color:var(--green)}
+  .scorebar{height:7px;background:#ECE8DE;border-radius:999px;overflow:hidden;margin-top:8px}
+  .scorebar span{display:block;height:100%;background:var(--green)}
+  .notice{padding:12px 14px;border:1px solid rgba(212,175,55,.25);background:#FFF9E7;border-radius:12px;color:#6A5825;font-size:13px}
+  .danger-notice{padding:12px 14px;border:1px solid rgba(158,78,61,.24);background:#FFF5F2;border-radius:12px;color:var(--danger);font-size:13px}
+  .compact-table{width:100%;border-collapse:collapse;font-size:12px}
+  .compact-table th,.compact-table td{padding:9px 7px;border-bottom:1px solid var(--line);text-align:left}
+  .compact-table th{color:var(--green);font-family:Georgia,serif}
+
+
+  .folder-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:16px;margin:20px 0}
+  .folder-card{background:rgba(255,253,248,.95);border:1px solid var(--line);border-radius:20px;box-shadow:var(--shadow);padding:22px;cursor:pointer;transition:.2s transform,.2s box-shadow}
+  .folder-card:hover{transform:translateY(-2px);box-shadow:0 16px 36px rgba(28,59,47,.13)}
+  .folder-card h4{font-family:Georgia,serif;color:var(--green);margin:0 0 8px;font-size:18px}
+  .folder-card p{margin:0;color:var(--muted);font-size:12px;line-height:1.5}
+  .folder-icon{width:42px;height:42px;border-radius:14px;background:var(--green);color:var(--gold2);display:flex;align-items:center;justify-content:center;font-weight:800;margin-bottom:14px}
+  .home-top5{background:linear-gradient(145deg,#FFFDF8,#F5EDDC);border:1px solid rgba(212,175,55,.28);border-radius:22px;box-shadow:var(--shadow);padding:24px;margin-bottom:18px}
+  .home-top5 h3{text-align:center;font-family:Georgia,serif;color:var(--green);font-size:24px;margin:0 0 8px}
+  .folder-back{margin-bottom:14px}
+  @media(max-width:1100px){.folder-grid{grid-template-columns:1fr 1fr}}
+  @media(max-width:620px){.folder-grid{grid-template-columns:1fr}}
+
+  .rank-gold{color:#7C6321;background:#FFF8DB;border:1px solid rgba(212,175,55,.4)}
+  .rank-silver{color:#4C5B57;background:#F1F4F2;border:1px solid rgba(76,91,87,.2)}
+  .rank-bronze{color:#7A5B3B;background:#F8EFE5;border:1px solid rgba(122,91,59,.2)}
+  .rank-watch{color:#6E776F;background:#F5F5F2;border:1px solid var(--line)}
+  .tag{display:inline-block;border-radius:999px;padding:3px 7px;font-size:10px;font-weight:700;margin-right:4px}
+  .verified{background:#EDF8F0;color:#2D6A4F;border:1px solid rgba(45,106,79,.25)}
+  .public{background:#EEF4F8;color:#365F79;border:1px solid rgba(54,95,121,.22)}
+  .ournote{background:#FFF9E7;color:#7C6321;border:1px solid rgba(212,175,55,.3)}
+  .estimate{background:#FFF3EE;color:#985A3C;border:1px solid rgba(152,90,60,.22)}
+  .needed{background:#F5F5F2;color:#6E776F;border:1px solid var(--line)}
+  .mission-row{display:grid;grid-template-columns:34px 1.3fr .7fr 70px 1.4fr .8fr;gap:10px;align-items:center;padding:11px 0;border-top:1px solid var(--line);font-size:12px}
+  .mission-row:first-child{border-top:0}
+  .mission-rank{font-family:Georgia,serif;font-size:18px;color:var(--gold)}
+  .intel-map{min-height:280px;border:1px dashed rgba(28,59,47,.22);border-radius:16px;background:linear-gradient(145deg,#FAF6EC,#F3EBD8);display:flex;align-items:center;justify-content:center;padding:24px;text-align:center}
+  .sector-stat{display:flex;justify-content:space-between;gap:10px;padding:9px 0;border-bottom:1px solid var(--line)}
+  .sector-stat:last-child{border-bottom:0}
+  @media(max-width:1100px){
+    .mission-row{grid-template-columns:30px 1fr 60px}
+    .mission-row .hide-small{display:none}
+  }
+
+  @media(max-width:1100px){.section-grid{grid-template-columns:1fr 1fr}}
+
+  @media(max-width:980px){
+    .app{grid-template-columns:1fr}
+    aside{position:relative;height:auto}
+    nav{grid-template-columns:repeat(3,1fr)}
+    .side-foot{display:none}
+    main{padding:22px}
+    .kpis,.cols,.health{grid-template-columns:1fr 1fr}
+  }
+  @media(max-width:620px){
+    nav{grid-template-columns:1fr 1fr}
+    .kpis,.cols,.health,.form-grid{grid-template-columns:1fr}
+    .topbar{flex-direction:column}
+    .datebox{text-align:left}
+  }
+
+  html{scroll-behavior:smooth}
+  body{
+    background:
+      radial-gradient(circle at 90% 0%, rgba(212,175,55,.055), transparent 34%),
+      linear-gradient(145deg,#F8F3E7,#F2EADC);
+    color:var(--ink);
+    letter-spacing:.01em;
+  }
+  aside{
+    background:linear-gradient(180deg,#19372C 0%,#1C3B2F 72%,#183229 100%);
+    padding:34px 20px;
+  }
+  .brand{padding:0 12px 30px;border-bottom:1px solid rgba(245,240,225,.10)}
+  .brand h1{font-family:Georgia,"Times New Roman",serif;font-size:27px;letter-spacing:.5px;color:#D8B94B}
+  .brand p{color:rgba(245,240,225,.72);font-size:10px;letter-spacing:2px}
+  nav{gap:10px;margin-top:28px}
+  nav button{
+    padding:14px 15px;border-radius:14px;font-size:14px;letter-spacing:.015em;
+    color:rgba(255,255,255,.82);transition:background .25s ease,transform .25s ease,color .25s ease;
+  }
+  nav button.active,nav button:hover{
+    background:rgba(245,240,225,.085);color:#FFFDF8;transform:translateX(2px)
+  }
+  main{padding:40px 46px 56px;max-width:1520px}
+  .section{display:none;opacity:0;transform:translateY(8px)}
+  .section.active{display:block;animation:luxFade .34s ease forwards}
+  @keyframes luxFade{to{opacity:1;transform:translateY(0)}}
+  .topbar{margin-bottom:30px}
+  .greeting h2{
+    font-family:Georgia,"Times New Roman",serif;font-size:38px;line-height:1.15;font-weight:500;
+    letter-spacing:-.02em;color:var(--green);margin-top:5px
+  }
+  .greeting p{font-size:14px;line-height:1.65;color:var(--muted)}
+  .eyebrow{font-size:10px;letter-spacing:2.2px;color:#9C8032}
+  .datebox .time{font-size:34px;font-family:Georgia,"Times New Roman",serif;color:var(--green)}
+  .datebox .date{font-size:12px;letter-spacing:.035em}
+  .card,.module-card,.home-top5,.folder-card{
+    background:rgba(255,253,248,.91);
+    border:1px solid rgba(28,59,47,.075);
+    box-shadow:0 20px 55px rgba(28,59,47,.065);
+    backdrop-filter:blur(7px);
+  }
+  .card{border-radius:22px;padding:25px}
+  .card h3,.module-card h4,.folder-card h4{
+    font-family:Georgia,"Times New Roman",serif;font-weight:500;letter-spacing:-.01em
+  }
+  .card h3{font-size:22px;margin-bottom:16px}
+  .sub{font-size:12px;line-height:1.55;color:#858279}
+  .folder-grid{gap:19px;margin:26px 0}
+  .folder-card{border-radius:22px;padding:26px;min-height:180px}
+  .folder-card:hover{transform:translateY(-3px);box-shadow:0 26px 65px rgba(28,59,47,.09)}
+  .folder-icon{
+    width:46px;height:46px;border-radius:15px;background:linear-gradient(145deg,#1C3B2F,#26493B);
+    color:#D9BC57;box-shadow:inset 0 0 0 1px rgba(212,175,55,.16)
+  }
+  .folder-card p{font-size:12px;line-height:1.65}
+  .home-top5{
+    border-radius:26px;padding:30px;border:1px solid rgba(212,175,55,.16);
+    background:linear-gradient(145deg,rgba(255,253,248,.96),rgba(248,242,226,.94))
+  }
+  .home-top5 h3{font-size:27px;letter-spacing:-.01em;font-weight:500}
+  .mission-row{
+    grid-template-columns:34px 1.25fr .7fr 70px 1.5fr .75fr;
+    padding:15px 4px;border-top:1px solid rgba(28,59,47,.075);line-height:1.5
+  }
+  .mission-rank{color:#B38F2F;font-size:19px}
+  .metric-row{padding:12px 0;border-top:1px solid rgba(28,59,47,.075)}
+  .health{gap:13px}
+  .health .mini{border-color:rgba(28,59,47,.07);border-radius:16px;padding:15px;background:rgba(255,255,255,.55)}
+  .pill,.tag,.source{border-radius:999px}
+  .rank-gold{background:#F9F2D9;color:#725B1F;border-color:rgba(212,175,55,.28)}
+  .rank-silver{background:#F1F1EC;color:#58605C;border-color:rgba(88,96,92,.14)}
+  .rank-bronze{background:#F3ECE4;color:#705B4A;border-color:rgba(112,91,74,.14)}
+  .rank-watch{background:#F3F2ED;color:#74756F;border-color:rgba(116,117,111,.12)}
+  button.primary,button.secondary,button.danger-btn{
+    border-radius:13px;padding:10px 14px;transition:transform .18s ease,box-shadow .18s ease,background .18s ease
+  }
+  button.primary{background:linear-gradient(145deg,#1C3B2F,#24493A);box-shadow:0 8px 18px rgba(28,59,47,.12)}
+  button.secondary{background:rgba(255,253,248,.78);border-color:rgba(28,59,47,.10)}
+  button.primary:hover,button.secondary:hover{transform:translateY(-1px)}
+  input,select,textarea{
+    border-color:rgba(28,59,47,.10);border-radius:13px;padding:12px 13px;background:rgba(255,255,255,.72)
+  }
+  input:focus,select:focus,textarea:focus{outline:2px solid rgba(212,175,55,.18);border-color:rgba(212,175,55,.36)}
+  .brief{
+    border-left:2px solid rgba(212,175,55,.70);background:linear-gradient(90deg,rgba(212,175,55,.075),rgba(255,255,255,.18));
+    padding:17px 18px;border-radius:14px;line-height:1.7
+  }
+  .notice,.danger-notice{
+    border-radius:15px;border-color:rgba(212,175,55,.18);
+    background:rgba(249,244,226,.74);color:#655B3C;line-height:1.55
+  }
+  .intel-map{
+    border:1px solid rgba(28,59,47,.08);background:linear-gradient(145deg,#FBF7ED,#F3EAD7);
+    border-radius:20px;min-height:310px
+  }
+  .compact-table th,.compact-table td{padding:13px 10px;border-bottom:1px solid rgba(28,59,47,.07);vertical-align:top}
+  .compact-table th{font-size:13px;font-weight:500}
+  .lux-timeline{display:grid;gap:10px}
+  .timeline-item{display:grid;grid-template-columns:96px 1fr auto;gap:14px;align-items:start;padding:15px 0;border-top:1px solid rgba(28,59,47,.075)}
+  .timeline-item:first-child{border-top:0}
+  .timeline-time{font-family:Georgia,serif;color:#8B7330;font-size:13px}
+  .intel-sentence{font-family:Georgia,serif;font-size:19px;line-height:1.55;color:var(--green)}
+  .prospect-controls{display:grid;grid-template-columns:1.25fr .75fr;gap:10px;margin-bottom:16px}
+  .prospect-card{padding:18px 0;border-top:1px solid rgba(28,59,47,.075)}
+  .prospect-card:first-child{border-top:0}
+  .prospect-head{display:grid;grid-template-columns:1.2fr .7fr 80px .85fr;gap:12px;align-items:start}
+  .prospect-meta{font-size:12px;color:var(--muted);line-height:1.55}
+  .smart-note{margin-top:10px;padding:11px 13px;border-radius:13px;background:rgba(212,175,55,.065);font-size:12px;line-height:1.55}
+  .bookshelf{display:grid;grid-template-columns:repeat(3,1fr);gap:17px}
+  .book-card{min-height:170px;padding:24px;border-radius:20px;background:linear-gradient(145deg,rgba(255,253,248,.96),rgba(248,243,231,.92));border:1px solid rgba(28,59,47,.07);box-shadow:0 15px 40px rgba(28,59,47,.055)}
+  .book-card h4{font-family:Georgia,serif;color:var(--green);font-size:19px;margin:0 0 10px;font-weight:500}
+  @media(max-width:1100px){.bookshelf{grid-template-columns:1fr 1fr}.prospect-head{grid-template-columns:1fr 80px}}
+  @media(max-width:620px){main{padding:26px 18px 42px}.greeting h2{font-size:31px}.bookshelf{grid-template-columns:1fr}.prospect-controls{grid-template-columns:1fr}}
+
+</style>
+</head>
+<body>
+<div class="app">
+  <aside>
+    <div class="brand">
+      <h1>Horn & Harvest</h1>
+      <p>CEO Intelligence & Growth</p>
+    </div>
+    <nav>
+      <button class="active" data-section="today">Today’s Work</button>
+      <button data-section="prospects">Prospect Hub</button>
+      <button data-section="business">Business Snapshot</button>
+      <button data-section="mogintel">Market Intelligence</button>
+      <button data-section="reference">Reference Library</button>
+    </nav>
+    <div class="side-foot">
+      Five-folder executive workspace<br>
+      Horn & Harvest OS — V3.3.3
+    </div>
+  </aside>
+
+  <main>
+    <section id="today" class="section active">
+      <div class="topbar">
+        <div class="greeting">
+          <div class="eyebrow">CEO Intelligence & Growth</div>
+          <h2>Good evening, Rashid.</h2>
+          <p>See the five priorities. Open the right folder. Work. Done.</p>
+        </div>
+        <div class="datebox">
+          <div class="time" id="clock">--:--</div>
+          <div class="date" id="date">--</div>
+        </div>
+      </div>
+
+      <div class="home-top5">
+        <h3>📍 MOGADISHU — TODAY’S TOP 5 PRIORITIES</h3>
+        <p class="sub" style="text-align:center">Importance-ranked from prospects, follow-ups, meetings, deadlines, market dates and verified business signals. No invented data.</p>
+        <div id="mogMission"></div>
+      </div>
+
+      <div class="folder-grid">
+        <div class="folder-card" onclick="showSection('work')">
+          <div class="folder-icon">1</div>
+          <h4>Today’s Work</h4>
+          <p>Daily list, follow-ups, reminders, deadlines and upcoming events.</p>
+        </div>
+        <div class="folder-card" onclick="showSection('prospects')">
+          <div class="folder-icon">2</div>
+          <h4>Prospect Hub</h4>
+          <p>Gold, Silver, Bronze and Watch prospects, meetings, quotes, orders and status.</p>
+        </div>
+        <div class="folder-card" onclick="showSection('business')">
+          <div class="folder-icon">3</div>
+          <h4>Business Snapshot</h4>
+          <p>Stock, warehouse visibility, money, margins, compliance, orders and shipments.</p>
+        </div>
+        <div class="folder-card" onclick="showSection('mogintel')">
+          <div class="folder-icon">4</div>
+          <h4>Market Intelligence</h4>
+          <p>Mogadishu map, events, seasons, demand alerts, sector insights and research notes.</p>
+        </div>
+        <div class="folder-card" onclick="showSection('reference')">
+          <div class="folder-icon">5</div>
+          <h4>Reference Library</h4>
+          <p>Brand standards, proposals, templates, database, history, rules and settings.</p>
+        </div>
+      </div>
+    </section>
+
+    
+    
+    <section id="work" class="section">
+      <div class="folder-back"><button class="secondary" onclick="showSection('today')">← Home</button></div>
+      <div class="topbar">
+        <div class="greeting">
+          <div class="eyebrow">Folder 1 — Daily Command Centre</div>
+          <h2>Today’s Work</h2>
+          <p>Everything requiring your attention, automatically ordered by business importance.</p>
+        </div>
+      </div>
+      <div class="card" style="margin-bottom:18px">
+        <h3>📍 Mogadishu — Today’s Top 5 Priorities</h3>
+        <div id="workTopActions"></div>
+      </div>
+      <div class="grid cols">
+        <div class="card">
+          <h3>Executive Timeline</h3>
+          <div id="executiveTimeline" class="lux-timeline"></div>
+        </div>
+        <div class="card">
+          <h3>Quiet Brief</h3>
+          <div id="workDailyActionPlan" class="brief">Your intelligence brief will appear here.</div>
+          <h3 style="margin-top:22px">Decisions Waiting</h3>
+          <div id="decisionPreview"></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="business" class="section">
+      <div class="folder-back"><button class="secondary" onclick="showSection('today')">← Home</button></div>
+      <div class="topbar">
+        <div class="greeting">
+          <div class="eyebrow">Folder 3 — Health & Control</div>
+          <h2>Business Snapshot</h2>
+          <p>Big facts, quiet alerts and one clear decision sentence. No decorative charts.</p>
+        </div>
+      </div>
+      <div class="grid kpis">
+        <div class="card kpi"><small>Available Stock</small><strong id="dailyStock">Blueprint connected</strong><div class="status" id="dailyStockStatus"><span class="dot warn"></span>Live feed awaiting commissioning</div></div>
+        <div class="card kpi"><small>Money In</small><strong id="businessFinRevenue">$0</strong><div class="status"><span class="dot"></span>Verified feed when connected</div></div>
+        <div class="card kpi"><small>Money Out</small><strong id="businessFinCosts">$0</strong><div class="status"><span class="dot"></span>Verified feed when connected</div></div>
+        <div class="card kpi"><small>Margin</small><strong id="businessFinMargin">0%</strong><div class="status"><span class="dot"></span>Calculated from entered data</div></div>
+      </div>
+      <div class="card" style="margin-bottom:18px">
+        <h3>CEO Insight</h3>
+        <div id="businessInsight" class="intel-sentence">There is not enough verified operating data yet to make a performance recommendation.</div>
+      </div>
+      <div class="section-grid">
+        <div class="module-card"><h4>Master Operations</h4><p class="muted">Fruit intake → production → stock → orders → dispatch → confirmed delivery.</p><button class="secondary" onclick="openOperationsBlueprint()">Open blueprint</button><span class="source public">CONNECTED WORKFLOW</span></div>
+        <div class="module-card"><h4>Compliance</h4><p class="muted">Certification validity and expiry alerts.</p><span class="source pending">AWAITING LIVE DATA LINK</span></div>
+        <div class="module-card"><h4>Orders & Delivery</h4><p class="muted" id="operationsOrderSummary">Order and shipment summaries from the operations blueprint.</p><span class="source pending" id="operationsFeedStatus">LIVE DATA PENDING</span></div>
+        <div class="module-card"><h4>Pricing & Margin</h4><p class="muted">Mogadishu profit check — facts before commitment.</p><button class="secondary" onclick="showSection('pricing')">Open calculator</button></div>
+        <div class="module-card"><h4>Finance</h4><p class="muted">Sales, costs, profit and margin — CEO view only.</p><button class="secondary" onclick="showSection('finance')">Open finance</button></div>
+        <div class="module-card"><h4>Best Customer</h4><p id="bestCustomerText" class="muted">No customer data yet.</p><span class="source pending">DATA NEEDED</span></div>
+      </div>
+    </section>
+
+    <section id="mogintel" class="section">
+      <div class="folder-back"><button class="secondary" onclick="showSection('today')">← Home</button></div>
+      <div class="topbar">
+        <div class="greeting">
+          <div class="eyebrow">Folder 4 — Confidential Market Intelligence</div>
+          <h2>Mogadishu Market Intelligence</h2>
+          <p>Verified locations, public signals, your field knowledge, seasons and demand intelligence — truth before confidence.</p>
+        </div>
+      </div>
+
+      <div class="card" style="margin-bottom:18px">
+        <h3>📍 Mogadishu — Commercial Mission</h3>
+        <p class="sub">Ranked from public signals and your own records. Unknown facts remain DATA NEEDED.</p>
+        <div id="marketMogMission"></div>
+      </div>
+
+      <div class="grid cols">
+        <div class="card">
+          <h3>Market Map</h3>
+          <div class="intel-map">
+            <div>
+              <b style="font-family:Georgia,serif;color:var(--green);font-size:20px">Mogadishu opportunity map</b>
+              <p class="muted">Only verified business locations belong on this map. Unknown locations stay off the map and remain DATA NEEDED.</p>
+            </div>
+          </div>
+        </div>
+        <div class="card">
+          <h3>Sector Dashboard</h3>
+          <div id="sectorDashboard"></div>
+        </div>
+      </div>
+
+      <div class="grid cols">
+        <div class="card">
+          <h3>Insights Panel</h3>
+          <div id="mogInsights"></div>
+        </div>
+        <div class="card">
+          <h3>Data Integrity</h3>
+          <div class="metric-row"><span><span class="tag verified">VERIFIED</span> Confirmed fact</span><strong>Use</strong></div>
+          <div class="metric-row"><span><span class="tag public">PUBLIC DATA</span> Published source</span><strong>Confirm</strong></div>
+          <div class="metric-row"><span><span class="tag ournote">OUR NOTE</span> Field intelligence</span><strong>Use</strong></div>
+          <div class="metric-row"><span><span class="tag estimate">ESTIMATE</span> Guidance only</span><strong>Caution</strong></div>
+          <div class="metric-row"><span><span class="tag needed">DATA NEEDED</span> Unknown</span><strong>Never guess</strong></div>
+        </div>
+      </div>
+
+      <div class="grid cols">
+        <div class="card"><h3>12-Month Event & Demand Calendar</h3><div id="eventCalendar"></div></div>
+        <div class="card"><h3>Seasonal Cycles</h3><div id="seasonalCycles"></div></div>
+      </div>
+
+      <div class="card">
+        <h3>Research Seed List — Mogadishu</h3>
+        <p class="sub">Initial research leads. Commercial facts that have not been established remain explicitly marked DATA NEEDED.</p>
+        <div id="researchSeedTable"></div>
+      </div>
+    </section>
+
+    <section id="reference" class="section">
+      <div class="folder-back"><button class="secondary" onclick="showSection('today')">← Home</button></div>
+      <div class="topbar">
+        <div class="greeting">
+          <div class="eyebrow">Folder 5 — Quiet Reference</div>
+          <h2>Reference Library</h2>
+          <p>Your standards, proposals, history and rules — organised like a private executive library.</p>
+        </div>
+      </div>
+      <div class="bookshelf">
+        <div class="book-card"><h4>Brand Standards</h4><p class="muted">Locked palette, typography, approved language and claims discipline.</p><div class="actions"><button class="secondary" onclick="showSection('brand')">Open</button></div></div>
+        <div class="book-card"><h4>Proposals & Templates</h4><p class="muted">Sector-specific premium pitch outlines and customer materials.</p><div class="actions"><button class="secondary" onclick="showSection('pitchlib')">Open</button></div></div>
+        <div class="book-card"><h4>Database & History</h4><p class="muted">Decisions, meetings, prospect history and relationship memory.</p><div class="actions"><button class="secondary" onclick="showSection('decisions')">Open history</button></div></div>
+        <div class="book-card"><h4>Strategy</h4><p class="muted">Mogadishu-first market goals, milestones and executive direction.</p><div class="actions"><button class="secondary" onclick="showSection('strategy')">Open</button></div></div>
+        <div class="book-card"><h4>Meeting Archive</h4><p class="muted">What was said, promised, objected to and agreed.</p><div class="actions"><button class="secondary" onclick="showSection('meetings')">Open</button></div></div>
+        <div class="book-card"><h4>Rules & Settings</h4><p class="muted">Data-truth labels, links, backup and desktop rules.</p><div class="actions"><button class="secondary" onclick="showSection('tools')">Open</button></div></div>
+      </div>
+    </section>
+
+    
+    <section id="pricing" class="section">
+      <div class="folder-back"><button class="secondary" onclick="showSection('business')">← Business Snapshot</button></div>
+      <div class="topbar"><div class="greeting"><div class="eyebrow">Business Snapshot — Pricing</div><h2>Pricing & Margin</h2><p>Mogadishu profit check before you commit.</p></div></div>
+      <div class="grid cols">
+        <div class="card">
+          <h3>Deal Inputs</h3>
+          <div class="form-grid">
+            <div><label>Product + production cost</label><input id="pcCost" type="number" step="0.01" value="0"></div>
+            <div><label>Transport</label><input id="pcTransport" type="number" step="0.01" value="0"></div>
+            <div><label>Port / local logistics</label><input id="pcDuty" type="number" step="0.01" value="0"></div>
+            <div><label>Local fees / other</label><input id="pcFees" type="number" step="0.01" value="0"></div>
+            <div><label>Target margin %</label><input id="pcMargin" type="number" step="0.1" value="30"></div>
+          </div>
+          <div class="actions"><button class="primary" onclick="calcMargin()">Calculate</button></div>
+        </div>
+        <div class="card">
+          <h3>Result</h3>
+          <div class="metric-row"><span>Total landed cost</span><strong id="pcLanded">$0.00</strong></div>
+          <div class="metric-row"><span>Wholesale / minimum selling price</span><strong id="pcSell">$0.00</strong></div>
+          <div class="metric-row"><span>Profit per unit</span><strong id="pcProfit">$0.00</strong></div>
+          <div class="metric-row"><span>Gross margin</span><strong id="pcResultMargin">0%</strong></div>
+          <div class="metric-row"><span>Mogadishu verdict</span><strong id="pcVerdict">DATA NEEDED</strong></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="brand" class="section">
+      <div class="folder-back"><button class="secondary" onclick="showSection('reference')">← Reference Library</button></div>
+      <div class="topbar"><div class="greeting"><div class="eyebrow">Reference Library — Locked Standards</div><h2>Brand Standards</h2><p>Quiet luxury, consistent language and one source of truth.</p></div></div>
+      <div class="bookshelf">
+        <div class="book-card"><h4>Palette</h4><p class="muted">Deep Harvest Green · Warm Ivory · Metallic Gold · Soft Charcoal.</p></div>
+        <div class="book-card"><h4>Core Message</h4><p class="muted">Dhadhanka Awoowayaasheen — The Taste of Our Ancestors.</p></div>
+        <div class="book-card"><h4>Claims Discipline</h4><p class="muted">Use only approved product, origin, certification and food-safety claims. If a fact is unverified, mark it DATA NEEDED.</p></div>
+      </div>
+    </section>
+
+    <section id="pitchlib" class="section">
+      <div class="folder-back"><button class="secondary" onclick="showSection('reference')">← Reference Library</button></div>
+      <div class="topbar"><div class="greeting"><div class="eyebrow">Reference Library — Proposals</div><h2>Proposals & Templates</h2><p>Premium sector-specific outlines for customer conversations.</p></div></div>
+      <div class="bookshelf">
+        <div class="book-card"><h4>Supermarket</h4><p class="muted">Trial placement · shelf positioning · margin conversation · reorder review.</p><div class="actions"><button class="secondary" onclick="copyPitch('supermarket')">Copy outline</button></div></div>
+        <div class="book-card"><h4>Hotel</h4><p class="muted">Minibar · breakfast · gift shop · welcome packs · VIP gifting.</p><div class="actions"><button class="secondary" onclick="copyPitch('hotel')">Copy outline</button></div></div>
+        <div class="book-card"><h4>Corporate / Institution</h4><p class="muted">Gift boxes · conferences · VIP hospitality · seasonal orders.</p><div class="actions"><button class="secondary" onclick="copyPitch('corporate')">Copy outline</button></div></div>
+      </div>
+    </section>
+
+    <section id="strategy" class="section">
+      <div class="folder-back"><button class="secondary" onclick="showSection('reference')">← Reference Library</button></div>
+      <div class="topbar"><div class="greeting"><div class="eyebrow">Reference Library — Direction</div><h2>Strategy</h2><p>Mogadishu first. Clear market focus, milestones and growth direction.</p></div></div>
+      <div class="grid cols">
+        <div class="card">
+          <h3>Strategic Focus</h3>
+          <label>Primary market</label><input id="strategyMarket" value="Mogadishu — Somalia" readonly>
+          <label>Key sectors</label><input id="strategySectors" placeholder="Hotels, supermarkets, restaurants, distributors...">
+          <label>Growth goal</label><textarea id="strategyGoal" rows="4" placeholder="What must Horn & Harvest achieve next?"></textarea>
+          <div class="actions"><button class="primary" onclick="saveStrategy()">Save strategy</button></div>
+        </div>
+        <div class="card"><h3>Current Direction</h3><div id="strategyView" class="brief">No strategy note entered yet.</div></div>
+      </div>
+    </section>
+
+    <section id="intelligence" class="section">
+      <div class="topbar">
+        <div class="greeting">
+          <h2>CEO Intelligence Brief</h2>
+          <p>Your recommended actions — prioritised, evidence-aware and focused on winning customers.</p>
+        </div>
+      </div>
+
+      <div class="grid cols">
+        <div class="card">
+          <h3>What would I do today?</h3>
+          <div class="brief" id="dailyActionPlan">Add prospects, meetings and follow-ups. The system will turn them into a focused action plan.</div>
+          <div class="actions">
+            <button class="primary" onclick="buildActionPlan()">Refresh today's plan</button>
+          </div>
+        </div>
+        <div class="card">
+          <h3>CEO Rule</h3>
+          <div class="brief">
+            Never waste your day on low-value activity. Prioritise accounts with the strongest combination of customer fit, decision-maker access, visibility, repeat-order potential and strategic value.
+          </div>
+        </div>
+      </div>
+
+      <div class="grid cols">
+        <div class="card">
+          <h3>Top 5 Actions Today</h3>
+          <div id="topActions"></div>
+        </div>
+        <div class="card">
+          <h3>Risks Before You Commit</h3>
+          <div id="intelRisks"></div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>Executive Signals</h3>
+        <div class="health">
+          <div class="mini"><b>Best Prospect</b><span id="bestProspect" class="pill gold">Not enough data yet</span></div>
+          <div class="mini"><b>Follow-ups Due</b><span id="followupCount" class="pill">0</span></div>
+          <div class="mini"><b>High-Priority Visits</b><span id="visitCount" class="pill">0</span></div>
+          <div class="mini"><b>Accounts at Risk</b><span id="accountRiskCount" class="pill">0</span></div>
+          <div class="mini"><b>Today's Win Target</b><span class="pill gold">1 qualified next step</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="growth" class="section">
+      <div class="topbar">
+        <div class="greeting"><h2>Growth Radar</h2><p>Where should Horn & Harvest go next?</p></div>
+      </div>
+
+      <div class="grid cols">
+        <div class="card">
+          <h3>Priority Segments</h3>
+          <div class="decision-item"><div class="grow"><b>Premium supermarkets</b><div class="muted">High repeat-purchase potential, visible shelf placement, easy trial measurement.</div></div><span class="pill gold">Priority A</span></div>
+          <div class="decision-item"><div class="grow"><b>Hotels & hotel gift shops</b><div class="muted">Premium positioning, international visitors, minibar, breakfast and gifting opportunities.</div></div><span class="pill gold">Priority A</span></div>
+          <div class="decision-item"><div class="grow"><b>Corporate & institutional gifting</b><div class="muted">Larger order sizes, seasonal gifts, conferences and VIP hospitality.</div></div><span class="pill">Priority B</span></div>
+          <div class="decision-item"><div class="grow"><b>Premium cafés & restaurants</b><div class="muted">Useful for visibility and sampling; prioritise venues with affluent, diaspora or international clientele.</div></div><span class="pill">Priority B</span></div>
+          <div class="decision-item"><div class="grow"><b>Airlines / lounges / travel retail</b><div class="muted">High strategic value but usually longer sales cycle and higher compliance requirements.</div></div><span class="pill">Strategic</span></div>
+        </div>
+
+        <div class="card">
+          <h3>Opportunity Scoring</h3>
+          <p class="sub">Each prospect is scored out of 100 so you spend time where it matters.</p>
+          <table class="table">
+            <tr><th>Factor</th><th>Weight</th></tr>
+            <tr><td>Customer fit</td><td>25%</td></tr>
+            <tr><td>Repeat-order potential</td><td>20%</td></tr>
+            <tr><td>Decision-maker access</td><td>20%</td></tr>
+            <tr><td>Brand visibility</td><td>15%</td></tr>
+            <tr><td>Order-size potential</td><td>10%</td></tr>
+            <tr><td>Ease / speed to trial</td><td>10%</td></tr>
+          </table>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>Growth Ideas Worth Testing</h3>
+        <div class="health">
+          <div class="mini"><b>One-Branch Trials</b><span class="muted">Win proof before asking for chain-wide rollout.</span></div>
+          <div class="mini"><b>Hotel Welcome Packs</b><span class="muted">Premium fruit as a local-Somali hospitality item.</span></div>
+          <div class="mini"><b>VIP Gift Boxes</b><span class="muted">Target conferences, ministries, companies and diaspora events.</span></div>
+          <div class="mini"><b>Manager Sampling</b><span class="muted">Sample only to decision-makers or strong influencers.</span></div>
+          <div class="mini"><b>Referral Map</b><span class="muted">Ask each buyer for one introduction to another buyer.</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="prospects" class="section">
+      <div class="folder-back"><button class="secondary" onclick="showSection('today')">← Home</button></div>
+      <div class="topbar">
+        <div class="greeting"><h2>Target Accounts</h2><p>Your prospect pipeline, ranked so you know who deserves your time first.</p></div>
+      </div>
+
+      <div class="grid cols">
+        <div class="card">
+          <h3>Add prospect</h3>
+          <div class="form-grid">
+            <div><label>Business / organisation</label><input id="prospectName" placeholder="Hotel, supermarket, restaurant..."></div>
+            <div><label>Segment</label>
+              <select id="prospectSegment">
+                <option>Premium supermarket</option>
+                <option>Hotel</option>
+                <option>Restaurant / café</option>
+                <option>Corporate / institution</option>
+                <option>Airline / travel</option>
+                <option>Distributor / wholesaler</option>
+                <option>Other</option>
+              </select>
+            </div>
+            <div><label>Decision-maker</label><input id="prospectContact" placeholder="Name / role if known"></div>
+            <div><label>Next follow-up</label><input id="prospectFollowup" type="date"></div>
+          </div>
+          <label>Why this account matters</label><textarea id="prospectWhy" rows="3" placeholder="Customer profile, location, footfall, diaspora, prestige, repeat sales potential..."></textarea>
+
+          <div class="form-grid">
+            <div><label>Customer fit (1–5)</label><select id="scoreFit"><option>1</option><option>2</option><option>3</option><option>4</option><option selected>5</option></select></div>
+            <div><label>Volume potential (1–5)</label><select id="scoreRepeat"><option>1</option><option>2</option><option>3</option><option>4</option><option selected>5</option></select></div>
+            <div><label>Decision-maker access (1–5)</label><select id="scoreAccess"><option>1</option><option>2</option><option>3</option><option selected>4</option><option>5</option></select></div>
+            <div><label>Premium match (1–5)</label><select id="scoreVisibility"><option>1</option><option>2</option><option>3</option><option selected>4</option><option>5</option></select></div>
+            <div><label>Growth upside (1–5)</label><select id="scoreOrder"><option>1</option><option>2</option><option>3</option><option selected>4</option><option>5</option></select></div>
+            <div><label>Evidence confidence (1–5)</label><select id="scoreEase"><option>1</option><option>2</option><option>3</option><option selected>4</option><option>5</option></select></div>
+          </div>
+          <div class="actions"><button class="primary" onclick="addProspect()">Add & rank prospect</button></div>
+        </div>
+
+        <div class="card">
+          <h3>Priority Queue</h3>
+          <div class="prospect-controls">
+            <input id="prospectSearch" placeholder="Search name, sector, location or notes…" oninput="render()">
+            <select id="prospectRankFilter" onchange="render()">
+              <option value="ALL">All ranks</option>
+              <option value="GOLD">Gold</option>
+              <option value="SILVER">Silver</option>
+              <option value="BRONZE">Bronze</option>
+              <option value="WATCH">Watch</option>
+            </select>
+          </div>
+          <div id="prospectList"></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="coach" class="section">
+      <div class="topbar">
+        <div class="greeting"><h2>Pitch Coach</h2><p>Walk into meetings prepared, calm and focused.</p></div>
+      </div>
+
+      <div class="grid cols">
+        <div class="card">
+          <h3>Meeting Preparation</h3>
+          <label>Who are you meeting?</label><input id="coachAccount" placeholder="Business / manager">
+          <label>Your objective</label><input id="coachGoal" placeholder="e.g. secure a 7-day trial">
+          <label>What do you know already?</label><textarea id="coachFacts" rows="4" placeholder="Customer type, previous conversation, what they care about..."></textarea>
+          <div class="actions"><button class="primary" onclick="buildPitch()">Build my meeting brief</button></div>
+        </div>
+        <div class="card">
+          <h3>Your Brief</h3>
+          <div id="pitchBrief" class="brief">Enter the meeting details and I will structure a concise pitch plan.</div>
+        </div>
+      </div>
+
+      <div class="grid cols">
+        <div class="card">
+          <h3>Questions to Ask</h3>
+          <div class="note-item"><div><b>Who makes the purchasing decision?</b><div class="muted">Do not leave without knowing the real decision-maker.</div></div></div>
+          <div class="note-item"><div><b>What products sell best in this category?</b><div class="muted">Learn before you pitch the whole range.</div></div></div>
+          <div class="note-item"><div><b>What would make a trial easy for you?</b><div class="muted">Remove friction and move to a concrete next step.</div></div></div>
+          <div class="note-item"><div><b>When should I follow up?</b><div class="muted">Always leave with a date, not “we'll call you”.</div></div></div>
+        </div>
+
+        <div class="card">
+          <h3>Common Objections</h3>
+          <div class="note-item"><div><b>“We already stock dried fruit.”</b><div class="muted">Position Horn & Harvest around Somali origin, premium presentation and a low-risk trial rather than asking them to replace everything.</div></div></div>
+          <div class="note-item"><div><b>“Price is high.”</b><div class="muted">Move discussion from unit price to premium positioning, margin, uniqueness and customer appeal.</div></div></div>
+          <div class="note-item"><div><b>“Send information.”</b><div class="muted">Send it — but secure a specific follow-up date before leaving.</div></div></div>
+        </div>
+      </div>
+    </section>
+
+<section id="planner" class="section">
+      <div class="topbar"><div class="greeting"><h2>Executive Planner</h2><p>Your diary, follow-ups and future commitments.</p></div></div>
+      <div class="grid cols">
+        <div class="card">
+          <h3>Add appointment or follow-up</h3>
+          <div class="form-grid">
+            <div><label>Title</label><input id="planTitle" placeholder="Follow-up meeting"></div>
+            <div><label>Person / organisation</label><input id="planWith" placeholder="Name or organisation"></div>
+            <div><label>Date</label><input id="planDate" type="date"></div>
+            <div><label>Time</label><input id="planTime" type="time"></div>
+          </div>
+          <label>Purpose / desired outcome</label><textarea id="planPurpose" rows="3" placeholder="What do you want to achieve?"></textarea>
+          <div class="actions"><button class="primary" onclick="addPlannerItem()">Add to planner</button></div>
+        </div>
+        <div class="card">
+          <h3>Upcoming</h3>
+          <div id="plannerList"></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="decisions" class="section">
+      <div class="topbar"><div class="greeting"><h2>Decision Register</h2><p>A permanent record of what you decided, why, and what happens next.</p></div></div>
+      <div class="grid cols">
+        <div class="card">
+          <h3>Record a decision</h3>
+          <label>Decision</label><input id="decisionText" placeholder="e.g. Approve one-branch supermarket trial">
+          <label>Reason</label><textarea id="decisionReason" rows="3" placeholder="Why this is the right decision"></textarea>
+          <label>Owner / next action</label><input id="decisionOwner" placeholder="e.g. Sales manager — prepare proposal">
+          <div class="actions"><button class="primary" onclick="addDecision()">Record decision</button></div>
+        </div>
+        <div class="card">
+          <h3>Open decisions</h3>
+          <div id="decisionList"></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="meetings" class="section">
+      <div class="topbar"><div class="greeting"><h2>Meeting Preparation</h2><p>Prepare, record, and follow through — one customer history in one place.</p></div></div>
+      <div class="card">
+        <h3>Meeting note</h3>
+        <div class="form-grid">
+          <div><label>Meeting title</label><input id="meetTitle"></div>
+          <div><label>Date</label><input id="meetDate" type="date"></div>
+        </div>
+        <label>Key notes</label><textarea id="meetNotes" rows="4"></textarea>
+        <label>Actions / promises made</label><textarea id="meetActions" rows="3"></textarea>
+        <div class="actions"><button class="primary" onclick="addMeeting()">Save meeting</button></div>
+      </div>
+      <div class="card" style="margin-top:18px"><h3>Meeting history</h3><div id="meetingList"></div></div>
+    </section>
+
+    <section id="finance" class="section">
+      <div class="topbar"><div class="greeting"><h2>Finance Snapshot</h2><p>A CEO-level view, not an accounting screen.</p></div></div>
+      <div class="grid kpis">
+        <div class="card kpi"><small>Revenue</small><strong id="finRevenue">$0</strong></div>
+        <div class="card kpi"><small>Costs</small><strong id="finCosts">$0</strong></div>
+        <div class="card kpi"><small>Profit</small><strong id="finProfit">$0</strong></div>
+        <div class="card kpi"><small>Margin</small><strong id="finMargin">0%</strong></div>
+      </div>
+      <div class="card">
+        <h3>Update snapshot</h3>
+        <div class="form-grid">
+          <div><label>Revenue</label><input id="revenueInput" type="number" step="0.01"></div>
+          <div><label>Costs</label><input id="costInput" type="number" step="0.01"></div>
+        </div>
+        <div class="actions"><button class="primary" onclick="saveFinance()">Update</button></div>
+      </div>
+    </section>
+
+    <section id="journal" class="section">
+      <div class="topbar"><div class="greeting"><h2>CEO Journal</h2><p>Three minutes at the end of the day. Your thinking becomes institutional memory.</p></div></div>
+      <div class="grid cols">
+        <div class="card">
+          <h3>Today</h3>
+          <label>What went well?</label><textarea id="journalGood" rows="3"></textarea>
+          <label>What did not go well?</label><textarea id="journalBad" rows="3"></textarea>
+          <label>Most important thing tomorrow?</label><textarea id="journalTomorrow" rows="3"></textarea>
+          <div class="actions"><button class="primary" onclick="saveJournal()">Save journal</button></div>
+        </div>
+        <div class="card">
+          <h3>Latest journal entry</h3>
+          <div id="journalLatest" class="brief">No journal entry yet.</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="tools" class="section">
+      <div class="topbar"><div class="greeting"><h2>Executive Tools</h2><p>Useful essentials without leaving your desktop.</p></div></div>
+      <div class="grid cols">
+        <div class="card">
+          <h3>Calculator</h3>
+          <input class="calc-display" id="calcDisplay" readonly value="0">
+          <div class="calc">
+            <button onclick="calc('7')">7</button><button onclick="calc('8')">8</button><button onclick="calc('9')">9</button><button class="op" onclick="calc('/')">÷</button>
+            <button onclick="calc('4')">4</button><button onclick="calc('5')">5</button><button onclick="calc('6')">6</button><button class="op" onclick="calc('*')">×</button>
+            <button onclick="calc('1')">1</button><button onclick="calc('2')">2</button><button onclick="calc('3')">3</button><button class="op" onclick="calc('-')">−</button>
+            <button onclick="calc('0')">0</button><button onclick="calc('.')">.</button><button onclick="calc('=')">=</button><button class="op" onclick="calc('+')">+</button>
+            <button style="grid-column:span 4" onclick="calc('C')">Clear</button>
+          </div>
+        </div>
+        <div class="card">
+          <h3>Quick Links</h3>
+          <p class="sub">Add your live URLs when ready.</p>
+          <label>Horn & Harvest website</label><input id="websiteUrl" placeholder="https://...">
+          <label>Operations portal</label><input id="opsUrl" placeholder="https://...">
+          <div class="actions">
+            <button class="primary" onclick="saveLinks()">Save links</button>
+            <button class="secondary" onclick="openLink('websiteUrl')">Open website</button>
+            <button class="secondary" onclick="openLink('opsUrl')">Open operations</button>
+          </div>
+          <hr style="border:0;border-top:1px solid var(--line);margin:20px 0">
+          <h3 style="font-size:18px">Backup & Restore</h3>
+          <p class="sub">Use this during testing so your CEO records are not lost even if the preview browser clears local storage.</p>
+          <div class="actions">
+            <button class="primary" onclick="exportBackup()">Download backup</button>
+            <button class="secondary" onclick="document.getElementById('backupFile').click()">Restore backup</button>
+            <input id="backupFile" type="file" accept="application/json" style="display:none" onchange="importBackup(event)">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="footer-note"><span id="saveStatus">Not yet saved</span> • Horn & Harvest OS — CEO Intelligence & Growth V3.3.3 — Mogadishu Edition • local prototype</div>
+  </main>
+</div>
+
+<script>
+const STORAGE_KEYS=['priorities','decisions','planner','meetings','finance','today','journal','links','prospects','strategy'];
+const store = {
+  get:(k,d)=>{try{
+    const raw=localStorage.getItem(k);
+    return raw===null?d:JSON.parse(raw);
+  }catch(e){return d}},
+  set:(k,v)=>{try{
+    localStorage.setItem(k,JSON.stringify(v));
+    const test=localStorage.getItem(k);
+    if(test!==null){setSaveStatus('Saved on this device'); return true;}
+  }catch(e){}
+  setSaveStatus('Preview storage unavailable — use Download backup');
+  return false;}
+};
+function setSaveStatus(msg){
+  const el=document.getElementById('saveStatus');
+  if(el) el.textContent=msg;
+}
+function testPersistence(){
+  try{
+    const key='hh_persist_test';
+    localStorage.setItem(key,'ok');
+    const ok=localStorage.getItem(key)==='ok';
+    localStorage.removeItem(key);
+    setSaveStatus(ok?'Local saving available':'Preview storage unavailable — use Download backup');
+  }catch(e){
+    setSaveStatus('Preview storage unavailable — use Download backup');
+  }
+}
+window.addEventListener('load',testPersistence);
+
+function updateClock(){
+  const now=new Date();
+  document.getElementById('clock').textContent=now.toLocaleTimeString([], {hour:'2-digit',minute:'2-digit'});
+  document.getElementById('date').textContent=now.toLocaleDateString('en-GB',{weekday:'long',day:'numeric',month:'long',year:'numeric'});
+}
+setInterval(updateClock,1000);updateClock();
+
+function showSection(id){
+  document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  document.querySelectorAll('nav button').forEach(b=>b.classList.toggle('active',b.dataset.section===id));
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+function openOperationsBlueprint(){
+  window.open(location.origin+'/operations','_blank','noopener');
+}
+function syncOperationsSnapshot(){
+  const stock=document.getElementById('dailyStock');
+  const stockStatus=document.getElementById('dailyStockStatus');
+  const orderSummary=document.getElementById('operationsOrderSummary');
+  const feedStatus=document.getElementById('operationsFeedStatus');
+  try{
+    const raw=localStorage.getItem('hh-operations-demo-v1');
+    if(!raw)return;
+    const ops=JSON.parse(raw);
+    const physical=Array.isArray(ops.stock)?ops.stock.reduce((sum,n)=>sum+(Number(n)||0),0):0;
+    const active=Array.isArray(ops.orders)?ops.orders.filter(o=>!['Delivered','Cancelled'].includes(o.status)).length:0;
+    const deliveries=Array.isArray(ops.orders)?ops.orders.filter(o=>['Dispatched','Arrived','Delivery issue'].includes(o.status)).length:0;
+    if(stock)stock.textContent=physical.toLocaleString()+' pouches';
+    if(stockStatus)stockStatus.innerHTML='<span class="dot"></span>Device demo record';
+    if(orderSummary)orderSummary.textContent=`${active} active order${active===1?'':'s'} · ${deliveries} active deliver${deliveries===1?'y':'ies'} in this device demo.`;
+    if(feedStatus){feedStatus.textContent='DEVICE DEMO LINK';feedStatus.className='source public';}
+  }catch(e){}
+}
+document.querySelectorAll('nav button').forEach(b=>b.addEventListener('click',()=>showSection(b.dataset.section)));
+
+function addPriority(){
+  const text=prompt('Enter the priority:');
+  if(!text)return;
+  const p=store.get('priorities',[]);
+  p.push({text,done:false});
+  store.set('priorities',p);render();
+}
+function togglePriority(i){
+  const p=store.get('priorities',[]);p[i].done=!p[i].done;store.set('priorities',p);render();
+}
+function removePriority(i){
+  const p=store.get('priorities',[]);p.splice(i,1);store.set('priorities',p);render();
+}
+
+function addDecision(){
+  const text=document.getElementById('decisionText').value.trim();
+  if(!text)return;
+  const d=store.get('decisions',[]);
+  d.unshift({text,reason:decisionReason.value.trim(),owner:decisionOwner.value.trim(),status:'Open',date:new Date().toISOString()});
+  store.set('decisions',d);
+  decisionText.value=decisionReason.value=decisionOwner.value='';
+  render();
+}
+function closeDecision(i){
+  const d=store.get('decisions',[]);d[i].status='Closed';store.set('decisions',d);render();
+}
+
+function addPlannerItem(){
+  const title=planTitle.value.trim();
+  if(!title || !planDate.value)return;
+  const p=store.get('planner',[]);
+  p.push({title,with:planWith.value.trim(),date:planDate.value,time:planTime.value,purpose:planPurpose.value.trim()});
+  p.sort((a,b)=>(a.date+a.time).localeCompare(b.date+b.time));
+  store.set('planner',p);
+  planTitle.value=planWith.value=planDate.value=planTime.value=planPurpose.value='';
+  render();
+}
+function deletePlanner(i){const p=store.get('planner',[]);p.splice(i,1);store.set('planner',p);render()}
+
+function addMeeting(){
+  if(!meetTitle.value.trim())return;
+  const m=store.get('meetings',[]);
+  m.unshift({title:meetTitle.value.trim(),date:meetDate.value,notes:meetNotes.value.trim(),actions:meetActions.value.trim()});
+  store.set('meetings',m);meetTitle.value=meetDate.value=meetNotes.value=meetActions.value='';render();
+}
+
+function saveFinance(){
+  const r=parseFloat(revenueInput.value||0), c=parseFloat(costInput.value||0);
+  store.set('finance',{r,c});render();
+}
+function saveToday(){
+  store.set('today',{opportunity:opportunity.value,risk:risk.value});render();
+}
+function saveJournal(){
+  const j={date:new Date().toLocaleDateString('en-GB'),good:journalGood.value,bad:journalBad.value,tomorrow:journalTomorrow.value};
+  store.set('journal',j);render();
+}
+function saveLinks(){
+  store.set('links',{website:websiteUrl.value,ops:opsUrl.value});
+}
+function openLink(id){
+  const u=document.getElementById(id).value.trim();
+  if(u)window.open(u,'_blank');
+}
+
+let expr='';
+function calc(v){
+  const d=document.getElementById('calcDisplay');
+  if(v==='C'){expr='';d.value='0';return}
+  if(v==='='){try{expr=String(Function('"use strict";return ('+expr+')')());d.value=expr}catch{d.value='Error';expr=''};return}
+  expr+=v;d.value=expr;
+}
+
+
+function exportBackup(){
+  const data={version:'1.1',exportedAt:new Date().toISOString(),records:{}};
+  STORAGE_KEYS.forEach(k=>data.records[k]=store.get(k,null));
+  const blob=new Blob([JSON.stringify(data,null,2)],{type:'application/json'});
+  const url=URL.createObjectURL(blob);
+  const a=document.createElement('a');
+  a.href=url;
+  a.download='Horn_Harvest_CEO_Backup_'+new Date().toISOString().slice(0,10)+'.json';
+  document.body.appendChild(a);a.click();a.remove();URL.revokeObjectURL(url);
+  setSaveStatus('Backup downloaded');
+}
+function importBackup(event){
+  const file=event.target.files && event.target.files[0];
+  if(!file)return;
+  const reader=new FileReader();
+  reader.onload=()=>{
+    try{
+      const data=JSON.parse(reader.result);
+      if(!data.records) throw new Error('Invalid backup');
+      STORAGE_KEYS.forEach(k=>{
+        if(Object.prototype.hasOwnProperty.call(data.records,k) && data.records[k]!==null){
+          localStorage.setItem(k,JSON.stringify(data.records[k]));
+        }
+      });
+      setSaveStatus('Backup restored');
+      render();
+      alert('Horn & Harvest CEO backup restored successfully.');
+    }catch(e){
+      alert('That file is not a valid Horn & Harvest CEO backup.');
+    }
+    event.target.value='';
+  };
+  reader.readAsText(file);
+}
+
+
+function prospectScore(p){
+  const fit=+(p.fit||0), volume=+(p.volume||p.repeat||0), access=+(p.access||0), premium=+(p.premium||p.visibility||0), growth=+(p.growth||p.order||0);
+  const raw=(fit*.30)+(volume*.25)+(access*.20)+(premium*.15)+(growth*.10);
+  return Math.round(raw/5*100);
+}
+function rankLabel(score){
+  if(score>=90)return ['GOLD','rank-gold'];
+  if(score>=70)return ['SILVER','rank-silver'];
+  if(score>=50)return ['BRONZE','rank-bronze'];
+  return ['WATCH','rank-watch'];
+}
+function addProspect(){
+  const name=document.getElementById('prospectName').value.trim();
+  if(!name)return;
+  const p=store.get('prospects',[]);
+  p.push({
+    name,
+    segment:prospectSegment.value,
+    contact:prospectContact.value.trim(),
+    followup:prospectFollowup.value,
+    why:prospectWhy.value.trim(),
+    fit:+scoreFit.value,
+    volume:+scoreRepeat.value,
+    access:+scoreAccess.value,
+    premium:+scoreVisibility.value,
+    growth:+scoreOrder.value,
+    confidence:+scoreEase.value,
+    status:'New',
+    added:new Date().toISOString()
+  });
+  p.sort((a,b)=>prospectScore(b)-prospectScore(a));
+  store.set('prospects',p);
+  prospectName.value=prospectContact.value=prospectFollowup.value=prospectWhy.value='';
+  render();
+}
+function removeProspect(i){
+  const p=store.get('prospects',[]);p.splice(i,1);store.set('prospects',p);render();
+}
+function advanceProspect(i){
+  const p=store.get('prospects',[]);
+  const flow=['New','Contacted','Met','Quoted','WON','LOST','Follow-Up Later'];
+  const ix=flow.indexOf(p[i].status);
+  p[i].status=flow[Math.min(ix+1,flow.length-1)];
+  store.set('prospects',p);render();
+}
+function buildActionPlan(){
+  render();
+  setSaveStatus('CEO action plan refreshed');
+}
+function buildPitch(){
+  const account=coachAccount.value.trim()||'this account';
+  const goal=coachGoal.value.trim()||'secure a clear next step';
+  const facts=coachFacts.value.trim();
+  pitchBrief.innerHTML=
+    '<b>Objective:</b> '+goal+'.<br><br>'+
+    '<b>Opening:</b> Keep it short. Introduce Horn & Harvest as a premium Somali naturally dried-fruit brand and explain why you believe it fits '+account+'.<br><br>'+
+    '<b>Discover first:</b> Ask what sells, who decides, what margin/format they need, and what would make a trial easy.<br><br>'+
+    '<b>Your ask:</b> Propose one simple low-risk next step — preferably a small measured trial, meeting with the buyer, or agreed sampling review.<br><br>'+
+    '<b>Before leaving:</b> Agree the exact person, action and follow-up date.'+
+    (facts?'<br><br><b>Known context:</b> '+facts:'');
+}
+
+
+function calcMargin(){
+  const cost=+pcCost.value||0, t=+pcTransport.value||0, d=+pcDuty.value||0, f=+pcFees.value||0, m=(+pcMargin.value||0)/100;
+  const landed=cost+t+d+f;
+  const sell=m>=1?0:(landed/(1-m));
+  const profit=sell-landed;
+  pcLanded.textContent='$'+landed.toFixed(2);
+  pcSell.textContent='$'+sell.toFixed(2);
+  pcProfit.textContent='$'+profit.toFixed(2);
+  pcResultMargin.textContent=(m*100).toFixed(1)+'%';
+  if(document.getElementById('pcVerdict')) pcVerdict.textContent = landed>0 ? (m>0?'Profitable at entered assumptions':'Not profitable') : 'DATA NEEDED';
+}
+function copyPitch(type){
+  const pitches={
+    supermarket:'Horn & Harvest supermarket trial: premium Somali naturally dried fruit, small measured trial, clear shelf placement, reorder review date, and decision-maker follow-up.',
+    hotel:'Horn & Harvest hotel pitch: premium Somali dried fruit for minibar, breakfast, gift shop, welcome packs and VIP gifting. Start with a low-risk trial and agree the review date.',
+    corporate:'Horn & Harvest corporate pitch: premium Somali dried-fruit gifting for conferences, VIP hospitality, seasonal gifts and institutional occasions. Agree quantity, presentation, budget and delivery date.'
+  };
+  navigator.clipboard?.writeText(pitches[type]||'');
+  alert('Pitch outline copied.');
+}
+function saveStrategy(){
+  const s={market:strategyMarket.value.trim(),sectors:strategySectors.value.trim(),goal:strategyGoal.value.trim()};
+  store.set('strategy',s);render();
+}
+
+const MOGADISHU_SEEDS=[
+ {name:'Jazeera Palace Hotel',sector:'Hotel',area:'Mogadishu',source:'PUBLIC DATA',fit:5,volume:4,access:3,premium:5,growth:4,why:'Established premium hotel; hosted a major 2026 national agri-food investment summit with 400+ participants.',known:'Hotel; major conference venue; public hospitality signal',needed:'Rooms, purchasing manager, monthly dried-fruit volume, supplier list'},
+ {name:'Amara Hotel',sector:'Hotel',area:'Airport / Marina Gate',source:'PUBLIC DATA',fit:5,volume:4,access:3,premium:5,growth:4,why:'Modern luxury hotel positioned for business travellers, government delegations, NGOs and international guests.',known:'Restaurant, coffee bar, conference/meeting spaces',needed:'Room count, procurement contact, monthly food spend'},
+ {name:'Samaan Suites',sector:'Hotel',area:'Airport Area',source:'PUBLIC DATA',fit:5,volume:4,access:3,premium:5,growth:4,why:'Luxury serviced hotel/apartments serving business travellers, NGO professionals, diplomats and visitors.',known:'60 serviced suites; restaurant; conference/event centre',needed:'Buyer name, F&B volume, supplier mix'},
+ {name:'Aven Premier International',sector:'Hotel',area:'Airport Road',source:'PUBLIC DATA',fit:4,volume:4,access:3,premium:4,growth:4,why:'Well-reviewed Mogadishu hotel on Airport Road; plausible hospitality target.',known:'Hotel; public rating/review footprint',needed:'Rooms, restaurant count, procurement contact, premium-food demand'},
+ {name:'Jowhara International Hotel',sector:'Hotel',area:'Off Afgoye Road',source:'PUBLIC DATA',fit:4,volume:4,access:3,premium:4,growth:3,why:'Established international hotel with significant public review footprint.',known:'Hotel; established public presence',needed:'Buyer, rooms, F&B volume, supplier list'},
+ {name:'Hayat Market Zope',sector:'Retail',area:'Mogadishu',source:'PUBLIC DATA',fit:5,volume:5,access:3,premium:4,growth:5,why:'Large supermarket with strong public footprint; directly relevant to packaged premium food.',known:'Supermarket; long opening hours',needed:'Branch count, buyer, premium aisle, dried-fruit sales'},
+ {name:'Juba Hypermarket',sector:'Retail',area:'Mogadishu',source:'PUBLIC DATA',fit:5,volume:5,access:3,premium:4,growth:5,why:'Hypermarket format gives strong packaged-food volume potential.',known:'Hypermarket; 24-hour public listing',needed:'Buyer, branches, dried-fruit category, monthly volume'},
+ {name:'Barako Hypermarket',sector:'Retail',area:'Mogadishu',source:'PUBLIC DATA',fit:5,volume:5,access:3,premium:4,growth:5,why:'Hypermarket format and strong rating make it a high-priority retail lead.',known:'Hypermarket; 24-hour public listing',needed:'Buyer, branches, premium-food category data'},
+ {name:'Ocean Oasis Supermarket',sector:'Retail',area:'Bondhere / Sundus Plaza',source:'PUBLIC DATA',fit:5,volume:4,access:3,premium:5,growth:5,why:'Positions itself as premium retail with worldwide sourcing in Mogadishu.',known:'Premium supermarket division; Mogadishu-based',needed:'Buyer, shelf capacity, branch plan, dried-fruit category'},
+ {name:'Nibble & Nosh',sector:'Restaurant / café',area:'Mogadishu',source:'PUBLIC DATA',fit:4,volume:3,access:3,premium:4,growth:3,why:'Top-ranked international restaurant in current public restaurant listings.',known:'International restaurant; high public rating',needed:'Seating, daily covers, manager, supplier preferences'},
+ {name:'Bacaafe Bakery & Cafe',sector:'Restaurant / café',area:'Mogadishu',source:'PUBLIC DATA',fit:4,volume:3,access:4,premium:4,growth:3,why:'Premium café/bakery price positioning and strong public rating.',known:'Coffee shop; public price band',needed:'Daily footfall, manager, retail/snack interest'},
+ {name:'Cafe Castello',sector:'Restaurant / café',area:'Maka Al Mukarama',source:'PUBLIC DATA',fit:4,volume:3,access:4,premium:4,growth:3,why:'Café on a major commercial corridor with established public presence.',known:'Coffee shop; Maka Al Mukarama location',needed:'Daily footfall, customer profile, manager'},
+ {name:'Aragsan Cafe and Restaurant',sector:'Restaurant / café',area:'Mogadishu',source:'PUBLIC DATA',fit:4,volume:3,access:4,premium:4,growth:3,why:'Pan-Asian restaurant with strong public rating.',known:'Pan-Asian restaurant',needed:'Seating, covers, buyer, speciality-food fit'},
+ {name:'MAALCO FOODS COMPANY',sector:'Distributor / wholesaler',area:'Digfeer Road',source:'PUBLIC DATA',fit:4,volume:5,access:4,premium:3,growth:5,why:'Food-products supplier could provide faster route to multiple buyers.',known:'Food products supplier',needed:'Portfolio, client base, dried-fruit lines, distribution coverage'}
+];
+
+function seedScore(p){
+  const raw=(p.fit*.30)+(p.volume*.25)+(p.access*.20)+(p.premium*.15)+(p.growth*.10);
+  return Math.round(raw/5*100);
+}
+function sourceTag(s){
+  const map={'VERIFIED':'verified','PUBLIC DATA':'public','OUR NOTE':'ournote','ESTIMATE':'estimate','DATA NEEDED':'needed'};
+  return `<span class="tag ${map[s]||'needed'}">${s}</span>`;
+}
+
+const HH_EVENTS = [
+  {date:'2026-10-01',title:'Horn & Harvest launch',sector:'All',source:'OUR NOTE',leadDays:28,note:'Launch readiness, buyer follow-ups and stock preparation.'},
+  {date:'2026-10-05',end:'2026-10-06',title:'EU–Somalia Business Forum',sector:'Business / investment',source:'PUBLIC DATA',leadDays:28,note:'Potential networking and commercial-introduction opportunity in Mogadishu.'}
+];
+
+const HH_SEASONS = [
+  {name:'Ramadan / Eid commercial period',date:null,source:'DATA NEEDED',note:'Verify official/local calendar dates annually before creating demand alerts.'},
+  {name:'Wedding / gifting peaks',date:null,source:'DATA NEEDED',note:'Build from Horn & Harvest sales history and local event intelligence after launch.'},
+  {name:'Fruit harvest / supply peaks',date:null,source:'DATA NEEDED',note:'Connect to production and sourcing records before using for decisions.'}
+];
+
+function daysFromToday(dateStr){
+  if(!dateStr)return null;
+  const a=new Date(); a.setHours(0,0,0,0);
+  const b=new Date(dateStr+'T00:00:00');
+  return Math.round((b-a)/86400000);
+}
+function prospectImportance(p){
+  let score=prospectScore(p);
+  const d=daysFromToday(p.followup);
+  if(d!==null && d<0) score+=18;
+  else if(d!==null && d<=2) score+=14;
+  else if(d!==null && d<=7) score+=8;
+  if(p.status==='Quoted')score+=10;
+  if(p.status==='Met')score+=7;
+  if(p.status==='Contacted')score+=4;
+  if(p.status==='WON'||p.status==='LOST')score-=30;
+  return score;
+}
+function smartProspectAdvice(p){
+  const s=prospectScore(p), d=daysFromToday(p.followup);
+  let reason=s>=90?'Gold-level fit: protect momentum and secure a concrete next step.'
+            :s>=70?'Strong fit: active pursuit is justified.'
+            :s>=50?'Useful prospect: nurture without displacing higher-value work.'
+            :'Keep on radar until stronger evidence appears.';
+  let next='Verify the decision-maker and ask for a specific next step.';
+  if(p.status==='New') next='Make first contact and identify the real purchasing decision-maker.';
+  if(p.status==='Contacted') next='Secure a meeting date; do not leave the follow-up open-ended.';
+  if(p.status==='Met') next='Turn the meeting into a trial, quote or dated next action.';
+  if(p.status==='Quoted') next='Follow up on the quote and ask for a decision date.';
+  if(p.status==='Follow-Up Later') next='Respect the agreed timing, then re-open with a specific reason.';
+  if(p.status==='WON') next='Protect delivery quality, then plan the first reorder conversation.';
+  if(p.status==='LOST') next='Record why it was lost before deciding whether to revisit.';
+  if(d!==null && d<0) reason='Follow-up is overdue. '+reason;
+  return {reason,next};
+}
+function sourceClass(s){
+  return {'VERIFIED':'verified','PUBLIC DATA':'public','OUR NOTE':'ournote','ESTIMATE':'estimate','DATA NEEDED':'needed'}[s]||'needed';
+}
+
+function setProspectStatus(index,status){
+  const p=store.get('prospects',[]);
+  if(!p[index])return;
+  p[index].status=status;
+  p.sort((a,b)=>prospectImportance(b)-prospectImportance(a));
+  store.set('prospects',p);
+  render();
+}
+
+function render(){
+  const priorities=store.get('priorities',[]);
+  priorityList.innerHTML=priorities.length?priorities.slice(0,3).map((x,i)=>`
+    <div class="priority-item">
+      <input type="checkbox" ${x.done?'checked':''} onchange="togglePriority(${i})">
+      <div class="grow"><b style="${x.done?'text-decoration:line-through;opacity:.55':''}">${x.text}</b></div>
+      <button class="danger-btn" onclick="removePriority(${i})">×</button>
+    </div>`).join(''):'<div class="muted">No priorities entered yet.</div>';
+
+  const decisions=store.get('decisions',[]);
+  const open=decisions.filter(x=>x.status==='Open');
+  decisionCount.textContent=open.length;
+  decisionPreview.innerHTML=open.length?open.slice(0,3).map(x=>`<div class="decision-item"><div class="grow"><b>${x.text}</b><div class="muted">${x.owner||'Owner not assigned'}</div></div><span class="pill gold">Open</span></div>`).join(''):'<div class="muted">No decisions waiting.</div>';
+  decisionList.innerHTML=decisions.length?decisions.map((x,i)=>`<div class="decision-item"><div class="grow"><b>${x.text}</b><div class="muted">${x.reason||''}</div><div class="muted">${x.owner||''}</div></div>${x.status==='Open'?`<button class="secondary" onclick="closeDecision(${i})">Close</button>`:'<span class="pill">Closed</span>'}</div>`).join(''):'<div class="muted">No decisions recorded yet.</div>';
+
+  const planner=store.get('planner',[]);
+  plannerList.innerHTML=planner.length?planner.map((x,i)=>`<div class="meeting-item"><div class="grow"><b>${x.title}</b><div class="muted">${x.with||''}</div><div class="muted">${x.date}${x.time?' · '+x.time:''}</div><div>${x.purpose||''}</div></div><button class="danger-btn" onclick="deletePlanner(${i})">×</button></div>`).join(''):'<div class="muted">No appointments entered.</div>';
+
+  const meetings=store.get('meetings',[]);
+  meetingList.innerHTML=meetings.length?meetings.map(x=>`<div class="meeting-item"><div><b>${x.title}</b><div class="muted">${x.date||''}</div><div>${x.notes||''}</div><div class="muted"><b>Actions:</b> ${x.actions||'None entered'}</div></div></div>`).join(''):'<div class="muted">No meeting notes yet.</div>';
+
+  const f=store.get('finance',{r:0,c:0});
+  const profit=f.r-f.c, margin=f.r?profit/f.r*100:0;
+  finRevenue.textContent=revenueKpi.textContent='$'+f.r.toLocaleString(undefined,{maximumFractionDigits:2});
+  finCosts.textContent='$'+f.c.toLocaleString(undefined,{maximumFractionDigits:2});
+  finProfit.textContent='$'+profit.toLocaleString(undefined,{maximumFractionDigits:2});
+  finMargin.textContent=margin.toFixed(1)+'%';
+
+  const t=store.get('today',{opportunity:'',risk:''});
+  opportunity.value=t.opportunity||'';risk.value=t.risk||'';
+
+  const j=store.get('journal',null);
+  journalLatest.innerHTML=j?`<b>${j.date}</b><br><br><b>Went well:</b> ${j.good||'—'}<br><br><b>Needs improvement:</b> ${j.bad||'—'}<br><br><b>Tomorrow:</b> ${j.tomorrow||'—'}`:'No journal entry yet.';
+
+  const links=store.get('links',{website:'',ops:''});
+  websiteUrl.value=links.website||location.origin+'/';opsUrl.value=links.ops||location.origin+'/operations';
+
+  const next=planner[0];
+  let brief=[];
+  if(open.length)brief.push(`${open.length} CEO decision${open.length>1?'s':''} waiting.`);
+  if(next)brief.push(`Next scheduled item: ${next.title} on ${next.date}${next.time?' at '+next.time:''}.`);
+  if(t.risk)brief.push(`Risk to watch: ${t.risk}.`);
+  if(t.opportunity)brief.push(`Opportunity: ${t.opportunity}.`);
+  if(priorities.length)brief.push(`Top priority: ${priorities.find(x=>!x.done)?.text || 'All current priorities completed.'}`);
+  briefText.textContent=brief.join(' ') || 'Nothing urgent has been entered yet. Add your priorities, meetings and decisions, and this page becomes your daily control room.';
+
+  const prospects=store.get('prospects',[]).sort((a,b)=>prospectScore(b)-prospectScore(a));
+  const todayISO=new Date().toISOString().slice(0,10);
+  const due=prospects.filter(p=>p.followup && p.followup<=todayISO && p.status!=='Customer');
+  const high=prospects.filter(p=>prospectScore(p)>=75 && p.status!=='Customer');
+
+  if(document.getElementById('prospectList')){
+    const q=(document.getElementById('prospectSearch')?.value||'').toLowerCase().trim();
+    const rf=document.getElementById('prospectRankFilter')?.value||'ALL';
+    const filtered=prospects
+      .filter(p=>{
+        const hay=[p.name,p.segment,p.contact,p.why,p.area,p.location].filter(Boolean).join(' ').toLowerCase();
+        const rank=rankLabel(prospectScore(p))[0];
+        return (!q||hay.includes(q)) && (rf==='ALL'||rank===rf);
+      })
+      .sort((a,b)=>prospectImportance(b)-prospectImportance(a));
+    prospectList.innerHTML=filtered.length?filtered.map((p)=>{
+      const originalIndex=prospects.findIndex(x=>x===p);
+      const s=prospectScore(p), r=rankLabel(s), advice=smartProspectAdvice(p);
+      const statuses=['New','Contacted','Met','Quoted','WON','LOST','Follow-Up Later'];
+      return `<div class="prospect-card">
+        <div class="prospect-head">
+          <div>
+            <b style="font-family:Georgia,serif;font-size:17px;color:var(--green)">${p.name}</b>
+            <div class="prospect-meta">${p.segment}${p.area||p.location?' · '+(p.area||p.location):''}${p.contact?' · '+p.contact:''}</div>
+          </div>
+          <div><span class="tag ${r[1]}">${r[0]}</span><div class="prospect-meta">Score ${s}/100</div></div>
+          <div><select aria-label="Status" onchange="setProspectStatus(${originalIndex},this.value)">${statuses.map(st=>`<option ${p.status===st?'selected':''}>${st}</option>`).join('')}</select></div>
+          <div class="prospect-meta"><b>Next:</b> ${p.followup||'DATA NEEDED'}</div>
+        </div>
+        <div class="smart-note"><b>Why it matters:</b> ${advice.reason}<br><b>Next action:</b> ${advice.next}<br><b>My notes:</b> ${p.why||'No note entered yet.'}</div>
+      </div>`;
+    }).join(''):'<div class="muted">No prospects match this view.</div>';
+  }
+
+  if(document.getElementById('bestProspect')){
+    bestProspect.textContent=prospects.length?`${prospects[0].name} — ${prospectScore(prospects[0])}/100`:'Not enough data yet';
+    followupCount.textContent=due.length;
+    visitCount.textContent=high.length;
+    accountRiskCount.textContent=prospects.filter(p=>p.followup && p.followup<todayISO && p.status!=='Customer').length;
+  }
+
+  let actions=[];
+  due.slice(0,3).forEach(p=>actions.push(`Follow up with ${p.name}${p.contact?' — '+p.contact:''}. Objective: move the account to a concrete next step.`));
+  high.filter(p=>!due.includes(p)).slice(0,3).forEach(p=>actions.push(`Prioritise ${p.name}. Opportunity score ${prospectScore(p)}/100 — prepare a targeted visit or call.`));
+  if(next) actions.push(`Prepare for ${next.title}${next.with?' with '+next.with:''}. Define the one outcome you want before the meeting.`);
+  if(open.length) actions.push(`Clear ${open.length} CEO decision${open.length>1?'s':''} so staff are not waiting on you.`);
+  if(!actions.length) actions.push('Build your prospect list today: identify 10 high-value accounts, score them, then contact the top 3.');
+
+  if(document.getElementById('topActions')){
+    topActions.innerHTML=actions.slice(0,5).map((a,i)=>`<div class="priority-item"><span class="pill gold">${i+1}</span><div class="grow"><b>${a}</b><div class="muted">Importance-ranked from the information currently available.</div></div></div>`).join('');
+  }
+  if(document.getElementById('dailyActionPlan')){
+    dailyActionPlan.textContent=actions.slice(0,3).join(' ');
+  }
+
+  let risks=[];
+  const f2=store.get('finance',{r:0,c:0});
+  if(high.length>=5) risks.push('You have several strong prospects. Avoid promising volume or delivery dates without checking production capacity.');
+  if(due.length>=3) risks.push('Follow-up backlog is growing. Prioritise old promises before adding too many new meetings.');
+  if(!prospects.length) risks.push('There is no prospect pipeline yet. Your biggest risk before launch is spending time on unranked, low-value visits.');
+  if(!risks.length) risks.push('No major growth risk is flagged from the information entered so far.');
+  if(document.getElementById('intelRisks')){
+    intelRisks.innerHTML=risks.map(r=>`<div class="decision-item"><div class="grow">${r}</div></div>`).join('');
+  }
+
+  // Daily CEO summary
+  if(document.getElementById('dailyDeals')) dailyDeals.textContent=Math.min(3,prospects.length);
+  if(document.getElementById('dailyMoney')){
+    const fx=store.get('finance',{r:0,c:0});
+    dailyMoney.textContent='$'+fx.r.toLocaleString()+' / $'+fx.c.toLocaleString();
+  }
+
+  // Pipeline
+  if(document.getElementById('pipelineTable')){
+    const stages=['Prospect','Contacted','Meeting','Quoted','Order','Delivered','Paid'];
+    pipelineTable.innerHTML=prospects.length?`<table class="compact-table"><tr><th>Account</th><th>Segment</th><th>Score</th><th>Status</th><th>Next follow-up</th></tr>${prospects.map(p=>`<tr><td>${p.name}</td><td>${p.segment}</td><td>${prospectScore(p)}/100</td><td>${p.status}</td><td>${p.followup||'—'}</td></tr>`).join('')}</table>`:'<div class="muted">No prospects entered yet.</div>';
+  }
+
+  // Customer portfolio
+  if(document.getElementById('customerPortfolio')){
+    const customers=prospects.filter(p=>p.status==='Customer');
+    customerPortfolio.innerHTML=customers.length?customers.map(p=>`<div class="decision-item"><div class="grow"><b>${p.name}</b><div class="muted">${p.segment} · Customer</div></div><span class="pill gold">GOLD / NEW</span></div>`).join(''):'<div class="muted">No customers yet — correct for pre-launch.</div>';
+  }
+
+  // Follow-ups
+  if(document.getElementById('followupList')){
+    followupList.innerHTML=due.length?due.map(p=>`<div class="decision-item"><div class="grow"><b>${p.name}</b><div class="muted">${p.contact||'Decision-maker not entered'} · due ${p.followup}</div></div><span class="pill gold">${prospectScore(p)}/100</span></div>`).join(''):'<div class="muted">No follow-ups due.</div>';
+  }
+
+  // Market performance pre-launch = prospect mix only
+  if(document.getElementById('marketTable')){
+    const seg={};
+    prospects.forEach(p=>{seg[p.segment]=(seg[p.segment]||0)+1});
+    const rows=Object.entries(seg).sort((a,b)=>b[1]-a[1]);
+    marketTable.innerHTML=rows.length?`<table class="compact-table"><tr><th>Segment</th><th>Prospects</th><th>Interpretation</th></tr>${rows.map(([k,v])=>`<tr><td>${k}</td><td>${v}</td><td>Pipeline mix only — no revenue conclusion yet</td></tr>`).join('')}</table>`:'<div class="muted">No market data yet.</div>';
+  }
+
+  // Strategy
+  const s=store.get('strategy',null);
+  if(s && document.getElementById('strategyView')){
+    strategyMarket.value=s.market||'';strategySectors.value=s.sectors||'';strategyGoal.value=s.goal||'';
+    strategyView.innerHTML=`<b>Primary market — Mogadishu only:</b> ${s.market||'—'}<br><br><b>Key sectors:</b> ${s.sectors||'—'}<br><br><b>Growth goal:</b> ${s.goal||'—'}`;
+  }
+
+  // Mogadishu Intelligence
+  if(document.getElementById('researchSeedTable')){
+    const sorted=[...MOGADISHU_SEEDS].sort((a,b)=>seedScore(b)-seedScore(a));
+    researchSeedTable.innerHTML=`<table class="compact-table"><tr><th>Target</th><th>Sector</th><th>Score</th><th>Rank</th><th>Evidence</th><th>Why</th><th>Missing data</th></tr>${sorted.map(x=>{const s=seedScore(x),r=rankLabel(s);return `<tr><td><b>${x.name}</b><div class="muted">${x.area}</div></td><td>${x.sector}</td><td>${s}</td><td><span class="tag ${r[1]}">${r[0]}</span></td><td>${sourceTag(x.source)}</td><td>${x.why}</td><td>${sourceTag('DATA NEEDED')} ${x.needed}</td></tr>`}).join('')}</table>`;
+  }
+
+  if(document.getElementById('mogMission')){
+    const combined=[
+      ...store.get('prospects',[]).map(p=>{const a=smartProspectAdvice(p);return {name:p.name,sector:p.segment,score:prospectScore(p),importance:prospectImportance(p),why:a.reason,next:a.next,deadline:p.followup||'Today',source:'OUR NOTE'}}),
+      ...MOGADISHU_SEEDS.map(p=>({name:p.name,sector:p.sector,score:seedScore(p),importance:seedScore(p),why:p.why,next:'Verify buyer / procurement contact, then request a short meeting',deadline:'This week',source:p.source}))
+    ].sort((a,b)=>(b.importance||b.score)-(a.importance||a.score)).slice(0,5);
+    mogMission.innerHTML=combined.map((x,i)=>{const r=rankLabel(x.score);return `<div class="mission-row"><div class="mission-rank">${i+1}</div><div><b>${x.name}</b><div>${sourceTag(x.source)} <span class="tag ${r[1]}">${r[0]}</span></div></div><div class="hide-small">${x.sector}</div><div><b>${x.score}</b></div><div class="hide-small">${x.why}<br><b>Next:</b> ${x.next}</div><div class="hide-small">${x.deadline}</div></div>`}).join('');
+  }
+
+  if(document.getElementById('sectorDashboard')){
+    const all=[...MOGADISHU_SEEDS];
+    const groups={Hotels:all.filter(x=>x.sector==='Hotel'),'Restaurants & Cafés':all.filter(x=>x.sector==='Restaurant / café'),Retail:all.filter(x=>x.sector==='Retail'),'Corporate / Institutions':all.filter(x=>x.sector==='Corporate / institution'),'Distributors / Wholesalers':all.filter(x=>x.sector==='Distributor / wholesaler')};
+    sectorDashboard.innerHTML=Object.entries(groups).map(([name,arr])=>{
+      const gold=arr.filter(x=>seedScore(x)>=90).length;
+      const avg=arr.length?Math.round(arr.reduce((s,x)=>s+seedScore(x),0)/arr.length):0;
+      return `<div class="sector-stat"><span>${name}</span><strong>${arr.length} leads · ${gold} Gold · Avg ${avg}</strong></div>`;
+    }).join('')+`<div class="sector-stat"><span>Events / Seasons</span><strong>EU-Somalia Business Forum · 5–6 Oct 2026</strong></div>`;
+  }
+
+  if(document.getElementById('mogInsights')){
+    mogInsights.innerHTML=`
+      <div class="decision-item"><div class="grow"><b>Airport-area hospitality is strategically relevant.</b><div class="muted">${sourceTag('PUBLIC DATA')} Multiple premium hotels explicitly target international, business, NGO and diplomatic guests. This is a strong premium-fit signal, not proof of dried-fruit demand.</div></div></div>
+      <div class="decision-item"><div class="grow"><b>Premium supermarkets deserve immediate testing.</b><div class="muted">${sourceTag('PUBLIC DATA')} Hayat Market, Juba Hypermarket, Barako Hypermarket and Ocean Oasis are visible packaged-food retail leads. Buyer and category data still need verification.</div></div></div>
+      <div class="decision-item"><div class="grow"><b>Major agri-food/business events can create high-value introductions.</b><div class="muted">${sourceTag('PUBLIC DATA')} NAFIS 2026 drew 400+ participants in August; the EU-Somalia Business Forum is scheduled for 5–6 October 2026 in the protected airport area.</div></div></div>
+      <div class="decision-item"><div class="grow"><b>Do not claim “richest area” or “highest premium consumption” yet.</b><div class="muted">${sourceTag('DATA NEEDED')} Reliable local income, footfall and consumption datasets were not found in the initial research pass.</div></div></div>`;
+  }
+
+
+  // Executive timeline: importance first, not date alone
+  if(document.getElementById('executiveTimeline')){
+    const timeline=[];
+    due.forEach(p=>timeline.push({importance:prospectImportance(p),when:p.followup||'Today',title:`Follow up — ${p.name}`,detail:smartProspectAdvice(p).next,source:'OUR NOTE'}));
+    planner.forEach(x=>timeline.push({importance:72,when:x.date+(x.time?' · '+x.time:''),title:x.title,detail:(x.with?x.with+' — ':'')+(x.purpose||'Prepare desired outcome.'),source:'OUR NOTE'}));
+    HH_EVENTS.forEach(e=>{
+      const d=daysFromToday(e.date);
+      if(d!==null && d>=0 && d<=e.leadDays) timeline.push({importance:80+(e.leadDays-d)/4,when:e.date,title:e.title,detail:`${d} day${d===1?'':'s'} away — ${e.note}`,source:e.source});
+    });
+    executiveTimeline.innerHTML=timeline.length?timeline.sort((a,b)=>b.importance-a.importance).slice(0,10).map(x=>`
+      <div class="timeline-item"><div class="timeline-time">${x.when}</div><div><b>${x.title}</b><div class="muted">${x.detail}</div></div><span class="tag ${sourceClass(x.source)}">${x.source}</span></div>`).join(''):
+      '<div class="muted">Nothing currently needs attention. The timeline will populate automatically from follow-ups, meetings, deadlines and verified market dates.</div>';
+  }
+
+  // Business insight: sentence, not a graph
+  if(document.getElementById('businessInsight')){
+    const customers=prospects.filter(p=>p.status==='WON');
+    const fx=store.get('finance',{r:0,c:0});
+    let msg='There is not enough verified operating data yet to make a performance recommendation.';
+    if(customers.length) msg=`You have ${customers.length} won account${customers.length===1?'':'s'}. Protect service quality and turn the first successful delivery into a scheduled reorder conversation.`;
+    else if(prospects.length>=5) msg='Your strongest immediate growth signal is still the prospect pipeline. Keep CEO time concentrated on the highest-ranked accounts until real sales data can replace assumptions.';
+    if(fx.r>0 && fx.c>fx.r) msg='Costs currently exceed recorded revenue. Pause discretionary commitments and verify the figures before making a pricing or expansion decision.';
+    businessInsight.textContent=msg;
+  }
+  if(document.getElementById('bestCustomerText')){
+    const won=prospects.filter(p=>p.status==='WON').sort((a,b)=>prospectScore(b)-prospectScore(a));
+    bestCustomerText.textContent=won.length?`${won[0].name} — highest-ranked won account in current records.`:'No customer data yet.';
+  }
+
+  // 12-month intelligence calendar
+  if(document.getElementById('eventCalendar')){
+    const now=new Date();
+    const year=now.getFullYear();
+    const monthNames=['January','February','March','April','May','June','July','August','September','October','November','December'];
+    eventCalendar.innerHTML=monthNames.map((m,i)=>{
+      const monthEvents=HH_EVENTS.filter(e=>new Date(e.date+'T00:00:00').getFullYear()===year && new Date(e.date+'T00:00:00').getMonth()===i);
+      return `<div class="metric-row"><span><b>${m}</b></span><div style="text-align:right">${monthEvents.length?monthEvents.map(e=>`${sourceTag(e.source)} ${e.title} — ${e.date}`).join('<br>'):`${sourceTag('DATA NEEDED')} No verified event entered`}</div></div>`;
+    }).join('');
+  }
+  if(document.getElementById('seasonalCycles')){
+    seasonalCycles.innerHTML=HH_SEASONS.map(s=>`<div class="decision-item"><div class="grow"><b>${s.name}</b><div class="muted">${s.note}</div></div>${sourceTag(s.source)}</div>`).join('');
+  }
+
+
+  // Mirror canonical calculations into the five-folder presentation shell.
+  const mirrorPairs=[
+    ['topActions','workTopActions'],
+    ['dailyActionPlan','workDailyActionPlan'],
+    ['finRevenue','businessFinRevenue'],
+    ['finCosts','businessFinCosts'],
+    ['finMargin','businessFinMargin'],
+    ['mogMission','marketMogMission']
+  ];
+  mirrorPairs.forEach(([srcId,dstId])=>{
+    const s=document.getElementById(srcId), d=document.getElementById(dstId);
+    if(s && d) d.innerHTML=s.innerHTML;
+  });
+
+}
+syncOperationsSnapshot();
+window.addEventListener('storage',syncOperationsSnapshot);
+render();
+</script>
+</body>
+</html>

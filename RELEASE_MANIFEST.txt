@@ -1,0 +1,7 @@
+Horn & Harvest Connected System V48
+Release date: 2026-10-08
+Start: ENGINEER_START_HERE_V48.md
+Verification: verification/V48_RESULTS.md
+Includes original website assets/source, production dist, backend/API, native-driver source, deployment setup, tests and archived legacy UI.
+Excludes installed dependencies, secrets, runtime business databases and generated platform binaries. Install dependencies with npm ci.
+Not deployed or commissioned; see required configuration/device checks.
